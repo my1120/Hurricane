@@ -1,15 +1,19 @@
-#' Read NMMAPS data for each city
+#' Read NMMAPS data for each city.
 #'
-#' @param city A character string giving abbreviation of city name.
+#' @param root The local path where the NMMAPS data is located.
+#' @param city A character string giving the abbreviation of city's name.
 #' @param collapseAge Logic value specifying whether to aggregate records based
 #'  on age group.
 #'
-#' @return df This function returns a dataframe containing date, death counts,
+#' @return This function returns a time-series dataframe containing date, death counts,
 #' etc.
 #'
+#' @examples
+#' readCity(root = "~/tmp/NMMAPS/", city = "miam")
+#'
 #' @export
-readCity <- function(city = c(), collapseAge = TRUE){
-  root <- "~/tmp/NMMAPS/" # local path where the NMMAPS data is stored
+readCity <- function(root = c(), city = c(), collapseAge = TRUE){
+  root <- root
   file <- paste(root, city, ".rds", sep = "")
   df <- readRDS(file)
 
@@ -24,5 +28,3 @@ readCity <- function(city = c(), collapseAge = TRUE){
 
   return(df)
 }
-#' @examples
-#  miam <- readCity(city = "miam", collapseAge = TRUE)
