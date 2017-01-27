@@ -20,14 +20,19 @@
 #' @examples
 #' \dontrun{
 #' fit_detroit <- CityFit(root = "~/tmp/NMMAPS/", criterion = "rain50",
-#'                        city = "det", cause = "accident")
+#'                        city = "det", cause = "accident",
+#'                        arg_lag = list(fun = "integer"))
+#'
+#' lag_knots <- logknots(14, 4)
+#' fit_detroit <- CityFit(root = "~/tmp/NMMAPS/", criterion = "rain50",
+#'                        city = "det", cause = "accident",
+#'                        arg_lag = list(fun = "ns", knots = lag_knots))
 #' }
 #'
 #' @export
 CityFit <- function(root = c(), criterion = c(), city = c(), cause = "all",
-                    control_ratio = 15, lags = 14, lag_fun = "ns",
-                    lag_knots = logknots(14, 4),
-                    storm_id = NA){
+                    control_ratio = 15, lags = 14,
+                    storm_id = NA, arg_lag = c()){
   print(city)
 
   df <- CrossoverData(root, criterion, city,
@@ -35,7 +40,7 @@ CityFit <- function(root = c(), criterion = c(), city = c(), cause = "all",
 
   cb <- dlnm::crossbasis(df$hurr, lag = c(0, lags),
                          argvar = list(fun = "lin"),
-                         arglag = list(fun = lag_fun, knots = lag_knots))
+                         arglag = arg_lag)
 
   # if this city has only one storm, "stratum" will not be included in the model.
   if(nrow(subset(df, hurr == 1)) == 1){
