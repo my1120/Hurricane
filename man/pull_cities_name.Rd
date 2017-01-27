@@ -9,7 +9,17 @@ pull_cities_name(criterion = c())
 \arguments{
 \item{criterion}{A character string which could be "rain50", "wind18", etc.}
 }
+\value{
+This function returns a character vector with abbreviation of
+cities' name.
+}
 \description{
 Pull the abbreviation of cities based on exposure criterion
+}
+\examples{
+\dontrun{
+pull_cities_name("rain50")
+}
+
 }
 
