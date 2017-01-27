@@ -1,0 +1,37 @@
+---
+title: "Meta Analysis"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+```{r load packages, warning=FALSE, message=FALSE}
+library(easypackages)
+libraries("lubridate", "dlnm", "splines", "mvmeta", "hurricaneexposure", "hurricaneexposuredata", "Hurricane", "dplyr", "purrr")
+```
+
+Here are some denotations:
++ Rainfall exposure: r1-50mm, r2-75mm, r3-100mm, r4-125mm.
+
+
+#### Univariate meta-analysis
+
+```{r}
+rain_criterion <- list("rain50", "rain75", "rain100", "rain125")
+r <- map(rain_criterion, Hurricane::pull_cities_name)
+r[[1]]
+```
+
+```{r eval=FALSE}
+# rain exposure
+
+
+rain_cities <- list(rain50_cities, rain75_cities, rain100_cities, rain125_cities) 
+rain_criterion <- list("rain50", "rain75", "rain100", "rain125")
+
+# all death
+#rain_meta_all <- mapply(UniMetaReg, city_list = rain_cities, criterion = rain_criterion,
+#                        SIMPLIFY = FALSE)
+#save(rain_meta_all, file = "data/rain_meta_all.RData")
+
+```

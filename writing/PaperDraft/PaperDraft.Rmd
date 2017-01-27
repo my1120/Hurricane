@@ -1,0 +1,193 @@
+---
+title: Tropical storms and associated risks to accidental, cardiovascular, and respiratory mortality in [x] United States communities, 1988--2005
+author:
+  - name: Meilin Yan
+    email: meilin.yan@colostate.edu
+    affiliation: Colorado State University
+  - name: Joshua Ferreri
+    email: joshua.m.ferreri@gmail.com
+    affiliation: Colorado State University
+  - name: Mohammad Z. Al-Hamdan
+    email: mohammad.alhamdan@nasa.gov
+    affiliation: NASA Marshall Space Flight Center
+  - name: William L. Crosson
+    email: bcrosson@usra.edu
+    affiliation: NASA Marshall Space Flight Center
+  - name: Seth Guikema
+    email: sguikema@umich.edu
+    affiliation: University of Michigan
+  - name: Roger D. Peng
+    email: rdpeng@jhu.edu
+    affiliation: Johns Hopkins Bloomberg School of Public Health
+  - name: G. Brooke Anderson
+    email: brooke.anderson@colostate.edu
+    affiliation: Colorado State University
+    footnote: Corresponding Author
+address:
+  - code: Colorado State University
+    address: Department of Environmental & Radiological Health Sciences, Lake Street, Fort Collins, CO, 80525
+  - code: NASA Marshall Space Flight Center
+    address: Universities Space Research Association, 320 Sparkman Dr., Huntsville, AL, 35805
+  - code: University of Michigan
+    address: Department of Industrial and Operations Engineering, 1205 Beal Ave., Ann Arbor, MI, 48109
+  - code: Johns Hopkins Bloomberg School of Public Health
+    address: Department of Biostatistics, 615 North Wolfe Street, Baltimore, MD, 21205
+abstract: |
+  Here we explore the association between Atlantic basin tropical storms and risks of accidental, cardiovascular, and respiratory mortality in [x] United States counties between 1987 and 2005. We investigate whether estimated risks differ depending on whether exposure to a storm is determined by distance, rainfall, or maximum wind. 
+  
+  We found ...
+
+bibliography: mybibfile.bib
+output: rticles::elsevier_article
+---
+
+Introduction
+==========================
+
+#### What we know about tropical storms and mortality risks
+
+The East and Gulf Coasts of the United States are commonly exposed to powerful and destructive tropical cyclonic storms. These storms—which include hurricanes, tropical storms, and tropical depressions—are expected to become stronger and more frequent in the Atlantic with climate change [@Seneviratne2012 -- double-check formatting for this reference]. However, the full scale of health impacts from cyclonic storms remains poorly characterized. 
+Most epidemiologic studies of cyclonic storms either identify immediate health needs following a single storm (rapid needs surveys) [@Centers2004Charley; @Centers2009Ike; @Greenough2008; @Kessler2007; @Centers1993Andrew; @Centers2005Four; @Centers2004Isabel; @Centers2006Katrina; @Centers2006Wilma; @Centers2002Allison; @Centers2000Floyd; @Centers2006Katrina2] or generate death and injury tolls based on medical coding [@Jani2006; @Brunkard2008; @Combs1996; @Centers2006Katrina3]. Results from rapid needs surveys are difficult to aggregate across storms because survey research designs are usually tailored for a specific storm and health need (e.g., health needs of the elderly in three Florida counties following Hurricane Charley [@Centers2004Charley]), and so are of limited used in generating overall estimates of health risks. Death and injury tolls that are based on medical coding (i.e., International Classification of Disease codes of “disaster-related” outcomes [@WHO2012 -- improve reference format for this reference]), are more comprehensive than rapid needs surveys, but are also difficult to quantitatively aggregate because of large variation in criteria used by health officials to classify a health outcome as “disaster-related” [@Combs1996; @Centers2006Katrina3; @Centers1993Andrew2; @Combs1999]. For example, medical coding of the health impacts of Hurricane Andrew depended on the separate judgments of 24 different medical examiners in Florida and 64 coroners in Louisiana [@Combs1996]. Finally, disaster assessments based on medical coding may miss increases in rates of common outcomes, like heart attacks and respiratory problems, because these commonly occur outside of disasters and so are harder for a coroner to distinguish on a case-by-case basis as “disaster-related”, compared to well-characterized storm risks like drowning [@Centers2000Floyd; @Brunkard2008; @Combs1996; @Centers2006Katrina3; @Centers1993Andrew2], car accidents [@Centers2006Katrina3; @Bourque2007], falls [@Centers2006Katrina3], cuts [@Bourque2007], fractures [@Bourque2007], fire injuries [@Bourque2007], electrocutions [@Bourque2007], and carbon monoxide poisoning [@Centers2006Katrina3; @Bourque2007].
+
+There is some evidence that these storms are likely to increase risks of mortality and morbidity for many causes, including cardiorespiratory causes. For example, four 2004 Florida hurricanes were associated with approximately 600 excess deaths (4% trauma-related; 34% heart-related; 19% cancer-related), a mortality impact underestimated by medical coding by a factor of four [@Mckinney2011]. Similarly, emergency department visits increased about 80% following Hurricane Katrina in three of the hardest-hit counties in Mississippi [@Centers2006Katrina2], and nursing home mortality rates increased about 70% in the month after Katrina compared to baseline rates [@Dosa2010]. Many Katrina evacuees arrived at Louisiana shelters with chest pain, shortness of breath, and dehydration [@Greenough2008], while evacuees in Texas suffered from respiratory problems and infections [@Mortensen2008].
+
+Tropical storms bring a number of hazards that can cause direct fatalities. For example, tropical storm-associated tornadoes caused over 300 direct deaths in the United States between 1995 and 2009 [@Moore2012].
+
+One study of all landfalling US hurricanes between 1970 and 2007 found that direct hurricane fatality counts were directly associated with wind and rain exposures within a county [@Czajkowski2011].
+
+Over 80% of the direct tropical storm fatalities in the US between 1970 and 1999 were drownings [@Rappaport2000]. While storm surge was a major threat to life from tropical storms in the early 20th century and earlier, in more recent tropical storms, inland flooding has caused more direct hurricane fatalities [@Rappaport2000].
+
+Studies have also investigated other, non-fatal health risks associated with tropical storms in the United States, including adverse birth outcomes [@Currie2013], autism prevalence [@Kinney2008], ... . 
+
+The worst tropical storms, in terms of direct fatalities, tend to be early-in-season storms [@Rappaport2000], which may be because the conditions that cause slow-moving storms, which can bring dangerous inland rains and flooding, are more likely in June through August [@Rappaport2000].
+
+Tropical storm winds can also cause direct fatalities, through structural damage, falling trees, and wind-borne debris [@Rappaport2000].
+
+#### Limitations of previous research
+
+Most research on hurricane-related deaths have focused on direct deaths (e.g., @Czajkowski2011, @Rappaport2000). "Direct" deaths associated with a tropical storm include drownings (from both storm surge and freshwater flooding) and wind-related deaths (e.g., from falling trees or structural damage to a building) [@Rappaport2000]. Typically, these casualty counts are aggregated based on reports, and different reports and databases can disagree in the numbers of casualities for an event [@Rappaport2000]. Storm event databases that rely on reporting, including NOAA's Storm Events database, often provide casuality estimates that undercount storm-related deaths [@Moore2012]. Subjective decisions are often required in creating tropical storm causality datasets based on storm event databases and reports [@Rappaport2000].
+
+Indirect hurricane deaths can come from causes like heart attacks, car accidents, and electrocutions [@Rappaport2000], but are studied much more rarely than direct hurricane deaths.
+
+#### Direct casualties versus total mortality risks
+
+#### Coastal versus inland risks
+
+Tropical storm hazards can exist well inland of where the storm makes landfall. For example, one study of tropical storm-related wind exposures found that most states in the eastern United States, even those well inland of the cost, have experienced severe winds related to tropical storms or decayed tropical storms at some time between 1900 and 2008 [@Kruk2010]. Tropical storms can also cause dangerous inland flooding, particularly as storms transition to extratropical [right word?] systems [@Halverson2015; @Atallah2003]. Further, almost half of the wind-related direct hurricane fatalities in the US between 1970 and 2008 occurred in inland counties, rather than coastal, counties [@Czajkowski2011].
+
+A number of historic storms have had extreme impacts well inland from the coast, including extreme impacts from rain for Floyd (1999) and Allison (2001) and extreme impacts from wind for Hugo (1989) and Fran (1996) [@Kruk2010].
+
+While some studies have found evidence of decreasing direct deaths from hurricanes over time in the US [citations], other studies of more recent periods have not found a decreasing trend when inland direct deaths are also included in the analysis [@Czajkowski2011]. In present-days periods (e.g., 1970--2007, in one study [@Czajkowski2011]), many direct hurricane fatalities occur in inland, rather than coastal, counties. This is particularly true for some storms that have brought dangerous freshwater flooding (e.g., Floyd in 1999, Allison in 2001, [storms] [citations]) or inland winds (e.g., Hugo in 1989, [storms] [citations]). These storms have not always been particularly strong at landfall; for example, Allison (2001) was a tropical storm, rather than hurricane, at landfall [citation].
+
+In coastal counties, the number of direct hurricane fatalites between 1970 and 2008 tended to increase at closer distances to the storm's center, while the inverse was true for inland counties, with more direct fatalities in counties a bit futher from the storm center track [@Czajkowski2011]. 
+
+A study of direct tropical storms in the US between 1970 and 1999 found only about 25% of these direct deaths were in coastal counties [@Rappaport2000].
+
+#### Ways of measuring exposure and how they could influence risk estimates
+
+Some storm hazards are strongly associated with distance both from the center of the storm and from the coast. For example, hurricane winds typically decay rapidly after the storm makes landfall [@Kruk2010].
+
+Rains from a tropical storm can cause extreme flooding. This flooding can be related to a number of health risks, including problems with water quality following the storm, especially if flooding affects landfills, wastewater treatment plants, or concentrated animal feedlot operations [@Mallin2006].
+
+Wind speeds of a hurricane are also directly associated with power outages during the storm [citation]. Power outages can bring a number of health-related hazards, both short term (e.g., ...) and longer-term, including from water quality problems that can result from wastewater treatment plants losing power [@Mallin2006].
+
+Studies of the health risks of hurricanes have classified storm exposure in different ways. Some studies have exclusively used distance from the storm's track (e.g., @Currie2013, ...), either distance to some point [@Currie2013] or based on whether a storm passed within a county's boundaries [citations]. Other studies have used metrics that combined distance with other measures, either to initially assign exposure [citations] or to explore effect modification (e.g., @Czajkowski2011 used distance to assign exposure to a storm, then explored whether rainfall or maximum winds modified risks of direct hurricane fatalities).
+
+One study found that direct storm deaths were not strongly associated with the strength of a storm at landfall, since some of the most dangerous storms could be weaker ones that caused extreme inland flooding (e.g., Charley in 1998, Alberto in 1994, and Alberto in 1994) [@Rappaport2000].
+
+In addition to causing drownings, extreme rains from a tropical storm could create dangerous road conditions [@Rappaport2000], which could cause or contribute to traffic accidents and could also slow down emergency response. 
+
+A number of storm hazards are directly associated to distance, either from the storm's center or from the point of landfall, including wind speed, storm surge, and dangerous waves [@Rappaport2000].
+
+#### Timing of storms and risks
+
+One study found that storms with similar rainfalls cause a more elevated streamflow, which is related to flooding, if they occur later in the hurricane season, because of seasonal variations in some of the factors that modify the relationship between rainfall and flooding risk, including vegetation patterns and meteorological conditions [@Chen2015]; while one other study also discussed that flooding risk was reduced early in the hurricane season by the hotter conditions, which allow more water evaporation [@Mallin2006], another study discussed that steering currents tend to be weaker in the hurricane season, which can cause slower-moving storms and so more rain and flooding [@Rappaport2000].
+
+#### What we do in this study
+
+Here we explore the association between Atlantic basin tropical storms and risks of accidental, cardiovascular, and respiratory mortality in [x] United States counties between 1987 and 2005. We investigate whether estimated risks differ depending on whether exposure to a storm is determined by distance, rainfall, or maximum wind. 
+
+Data and Methods
+============
+
+#### Hurricane track data
+
+The HURDAT "best tracks" data [@Jarvinen1988] have been used in a number of studies, including ones exploring ..., [citations] and development of a new hurricane hazard index [@Rezapour2014]. The extended best tracks data extension of HURDAT [@Demuth2006], which we use in this study, has been used in studies of hurricane-related inland wind exposure [@Kruk2010], ... [citations].
+
+#### Rain data
+
+In this study, we use precipitation data from the North American Land Data Assimilation System, phase 2 (NLDAS-2) [@Rui2014] to characterize rain-based exposure to tropical storms. The NLDAS-2 data integrates satellite-based and land-based monitoring and applies a land-surface model to create a reanalysis dataset that is spatially and temporally complete across the continental United States [@Rui2014; @AlHamdan2014]. This data has been used in previous research to investigate tropical storms, including in a study of the relationship between rainfall and streamflow responses for tropical storms in a North Carolina watershed [@Chen2015].
+
+The NLDAS-2 precipitation data is originally provided hourly for a 1/8 degree grid [@Rui2014; @AlHamdan2014]. To generate county-level daily rainfall estimates, we first aggregated data at each grid point, after converting the timestamp of each observation to local time, to create a daily estimate at the grid point. We then averaged all grid points within a county's boundaries to generate a county-level average of daily precipitation [@AlHamdan2014]. This county-level precipitation data is publicly available through the US Centers for Disease Control's Wide-ranging Online Data for Epidemiological Research (WONDER) database [citation for WONDER; @AlHamdan2014].
+
+#### Wind data
+
+#### Health data
+
+The mortality data were obtained from the National Center for Health Statistics and include daily mortality counts, aggregated by community, for 108 United States communities (1987–2005), including [x] communities with exposure based on at least one metric to at least one tropical storm over the study period ([map]). For each community, we obtained daily counts throughout the study period for accidental (ICD [x]), cardiovascular (ICD [x]), and respiratory (ICD [x]) deaths. 
+
+#### Assigning exposure based on distance-, rain-, and wind-related metrics
+
+Tropical storm exposure can be assigned at the city level in a variety of ways, and models may be sensitive to the method of assignment. For example, one way to assign exposure is to consider a community "storm-affected"" on a given day if a storm’s track has passed within a certain distance (e.g., 100 kilometers) of the community's center; another way is to consider a community "storm-affected"" if rainfall surpassed a certain amount (e.g., 75 millimeters) on days within a certain window of when a storm track passed within a certain distance of the city center. As part of this research, we investigate the sensitivity of the models to several reasonable storm exposure metrics. 
+
+For each storm, we interpolated tracks from the 6-hour synoptic time measurements down to 15-minute increments, using a linear interpolation between observed locations. 
+
+To determine the distance between each county and a storm at the storm's closest approach to the county, we first obtained latitude and longitude coordinates of each study county's population mean center as of the 2010 US Census [citation]. We calculated the distance between each county center and each 15-minute storm location using great circle distance, assuming an Earth radius of ... [sp citation]. We found the minimum distance of these distance measurements for each study county for the storm and recorded both the distance and time of this point in the storm's tracks as the closest distance and closest time for the county. To enable pairing with rain and health data, we converted the closest time to local time for the county using timezone designations based on the Olson / IANA database [countytimezone citation, Olson / IANA database citation]. For study communities that are aggregations of multiple counties (e.g., New York, NY, includes the counties of ...), we determined both the mean of all county-specific closest distances and the minimum of the distance for any of the community's counties (for single-county communities, these values both equal the simple closest distance between the county and the storm).
+
+#### Methods
+
+By increasing the study power through a national, multi-year analysis, this study is able to investigate:  (1) susceptibility at the individual level (by age, gender, race) (2) susceptibility at the community level (by community socioeconomic characteristics); and (3) physical characteristics that make a storm more dangerous to health (wind speed, rainfall).
+
+To test differences in susceptibility by individual characteristics, we modeled overall storm effects with data stratified by age and cause of death. To test whether community-level characteristics modify average storm-related health risks, we incorporated community-level characteristics into the second-level of the pooled two-level normal independent sampling estimation of the main model results. These community-level characteristics included measures from the US Census [citation for county data], including unemployment rate and racial distribution, as well as measures of whether or not a city is coastal [citation, maybe NOAA’s "Spatial Trends in Coastal Socioeconomics"].
+
+To determine whether certain storm characteristics are associated with more severe health risks, we estimated the health effects of each individual storm and then used a Bayesian framework [@Everson2000] to pool these storm-specific effect estimates while incorporating three storm characteristics as potential effect modifiers: storm strength (e.g. Category 1 Hurricane, Tropical Storm, etc.), total rainfall within the affected community, and maximum wind speed within the affected community. 
+
+Results
+===================
+
+#### Exposure to tropical storms in study communities
+
+Discussion
+===================
+
+#### Risks from tropical storms
+
+One study found that hurricanes in Texas between 1996 and 2008 were significantly associated with some adverse birth outcomes (need for assisted ventilation for more than 30 minutes, meconium aspiration syndrome), but not with others (gestation, low birth weight) [@Currie2013]. While this study found that hurricane exposure was positively associated with risk of some adverse birth outcomes, their analysis suggested that this association was likely not caused by a disruption of medical services related to the storm [@Currie2013]. They suggest the possibility that the observed risks might be associated with increased stress during pregnancy for women exposed to storms [@Currie2013]. Another study found an increase in autism prevalence associated with exposure to hurricanes in Louisiana between 1980 and 1995 [@Kinney2008]; this study also hypothesizes that this association might be related to storm-related stress.
+
+Health risks from tropical storms might be modified by the vulnerability of the location (e.g., flooding vulnerability of a county) or by vulnerability factors in the popluation (e.g., high poverty levels) [@Kinney2008].
+
+#### Variation in risks based on tropical storm exposure metric
+
+Different metrics of exposure can identify different storm-related hazards. For example, slow-moving storms are associated with increased risk of dangerous rain and flooding [@Halverson2015], but decreased risk of dangerous inland winds [@Kruk2010].
+
+One study found that a metric of hurricane strength that incorporated rain, in addition to a storm's intensity as measured by wind speed, was more strongly associated with the number of [direct?] deaths and cost of storm-related damage for US landfalling hurricanes between 2003 and 2012 (excluding Hurricanes Katrina and Sandy) than a metric that only used wind speed [@Rezapour2014].
+
+One study found that, once counties were identified as "exposed" based on a distance-based metric, county-level hurricane direct fatalities increased as the total rainfall and maximum windspeeds of the storm in the county increased [@Czajkowski2011]. However, this study also found that their distance-based criteria likely excluded some counties that experienced dangerous exposures and direct hurricane fatalities [@Czajkowski2011].
+
+#### Risks near the coast versus inland
+
+While some tropical storm hazards (waves, storm surge) occur essentially exclusively at the coast, other hazards can occur well inland from landfall. For example, fatal tropical storm-related hurricanes in the US occur most commonly when a high-intensity storm begins to decay inland of landfall [@Moore2012].
+
+#### Limitations with distance-based exposure
+
+Many of the hazards caused by tropical storms can occur far away from the storm's center path, including tornadoes, which are most common at 200--500 kilometers from the storm's center [@Moore2012].
+
+#### Limitations with rain-based exposure
+
+Storms with the same amount of rainfall can vary substantially in storm-related streamflow responses [@Chen2015]. Since tropical storm rains likely cause threats to health largely through flood hazards, a more direct measure of flooding from storms might provide a more specific measure of when a community experiences a dangerous exposure to a tropical storm. 
+
+Some storms move very slowly, and these tend to be the storms associated with heavy rainfall [@Medlin2007]. It can be hard to determine an appropriate range of days to include when calculating storm-related rainfalls. Here, we use a three-day window, centered on the day when the storm was closest to the county. However, other studies have used longer periods to try to fully characterize rainfall for slow-moving storms; for example, one study used a period of over four days to estimate total rain for Hurricane Danny in 1997 [@Medlin2007].
+
+#### Limitations with wind-based exposure
+
+The wind-based intensity of a hurricane can be strongly associated with the amount of property damage caused by a hurricane [@Pielke1998]. However, wind intensity of a storm might not be as strongly associated with health risks, particularly for indirect deaths. 
+
+While many studies of the health impacts of tropical storms have used wind estimates based on wind models that assumed symmetric decay of winds on either side of the storm's tracks (e.g., @Czajkowski2011, ...), here we used wind models that attempted to capture the asymmetric nature of hurricane winds.
+
+#### Further research 
+
+Health risks associated with a cyclonic storm might be aggravated by the infrastructure damage caused by the storm. Infrastructure damage outside of storms can bring substantial health risks. For example, 90 excess deaths were associated with the 2003 Northeastern blackout in New York, NY, mostly from cardiovascular causes [@Anderson2012]. During a storm, infrastructure damage may aggravate health risks. Studies of specific hurricanes have found that infrastructure damage can limit access to medications, health facilities, food, and water [@Centers2009Ike; @Centers1993Andrew; @Centers2005Four; @Centers2004Isabel; @Centers2006Katrina2; @Smith1992; @Silverman1995]; create dangerous conditions in hospitals [@Brunkard2008; @Silverman1995]; and cause carbon monoxide poisonings [@Centers2000Floyd; @Centers2006Katrina2; @Bourque2007; @Centers2005CO; @Centers2009CO]. Flooding from Tropical Storm Allison in 2001 closed or debilitated nine hospitals in Houston, TX, substantially reducing the city’s hospital bed capacity and overwhelming remaining emergency departments [@Damore2005]. Hurricane Wilma (2005) caused power outages for about 3 million residences [@Centers2006Wilma]; Hurricane Ike (2008) also caused outages for about 3 million residences, and in parts of Houston service was out for weeks [@Centers2009Ike]. Storm damage can also increase exposure to environmental health hazards—flooding from Hurricane Floyd closed over 20 water treatment plants and contaminated local water sources with untreated hog waste [@Setzer2004]. Future research could investigate whether storm health risks are aggravated by storm-related road damage and power outages.
+
+
+References {#references .unnumbered}
+==========

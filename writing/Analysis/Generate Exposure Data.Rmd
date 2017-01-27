@@ -1,0 +1,75 @@
+---
+title: "Generate_Exposure_Data"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+Run this file to generate exposure data based on rain, wind, distance, and events.  
+
+First, you need to have the dataset which contains information (including fips) for all NMMAPS cities. If you already have it, say the name is "county", you need to run the following chunk to make sure these fips is correct for Miami and are all 5-digit.
+
+```{r eval=FALSE}
+# Change fips for Miami
+county$fips[county$fips == "12025"] <- "12086"
+
+# Add 0 to these 4-digit fips
+county$fips <- sprintf("%05s", county$fips)
+```
+
+```{r}
+county <- readRDS("data/county.rds")
+communities <- subset(county, select = c("city", "cityname", "fips"))
+colnames(communities)[1] <- "commun"
+```
+
+```{r load packages}
+library(hurricaneexposure)
+library(hurricaneexposuredata)
+```
+
+##### Rain-based exposure: 500km distance, 3-day window, rainfall = 50, 75, 100, and 125 mm.
+```{r eval=FALSE}
+rain_criterion <- list(50, 75, 100, 125)
+rain_file <- list("rain50", "rain75", "rain100", "rain125")
+
+for(i in 1:4){
+  dir_rain <- paste0("exposure/", rain_file[i])
+  rain_exposure(locations = communities,
+                start_year = 1988, end_year = 2005,
+                rain_limit = rain_criterion[i], dist_limit = 500,
+                days_included = c(-1, 0, 1),
+                out_type = "rds", out_dir = dir_rain)
+}
+```
+
+##### Wind-based expsoure: 12, 15, 18 m/sec
+```{r eval=FALSE}
+wind_criterion <- list(12, 15, 18)
+wind_file <- list("wind12", "wind15", "wind18")
+
+for(i in 1:3){
+  dir_wind <- paste0("exposure/", wind_file[i])
+  wind_exposure(locations = communities,
+                start_year = 1988, end_year = 2005, 
+                wind_limit = wind_criterion[i],
+                out_type = "rds", out_dir = dir_wind)
+}
+```
+
+##### Distance-based exposure: 50, 75, 100 km
+```{r eval=FALSE}
+dist_criterion <- list(50, 75, 100)
+dist_file <- list("dist50", "dist75", "dist100")
+
+for(i in 1:3){
+  dir_dist <- paste0("exposure/", dist_file[i])
+  distance_exposure(locations = communities,
+                    start_year = 1988, end_year = 2005, 
+                    dist_limit = dist_criterion[i],
+                    out_type = "rds", out_dir = dir_dist)
+}
+```
+
+##### Event-based exposure: flood and tornado
+

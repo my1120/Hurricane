@@ -1,0 +1,880 @@
+\documentclass[]{elsarticle} %review=doublespace preprint=single 5p=2 column
+%%% Begin My package additions %%%%%%%%%%%%%%%%%%%
+\usepackage[hyphens]{url}
+\usepackage{lineno} % add
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\bibliographystyle{elsarticle-harv}
+\biboptions{sort&compress} % For natbib
+\usepackage{graphicx}
+\usepackage{booktabs} % book-quality tables
+%% Redefines the elsarticle footer
+%\makeatletter
+%\def\ps@pprintTitle{%
+% \let\@oddhead\@empty
+% \let\@evenhead\@empty
+% \def\@oddfoot{\it \hfill\today}%
+% \let\@evenfoot\@oddfoot}
+%\makeatother
+
+% A modified page layout
+\textwidth 6.75in
+\oddsidemargin -0.15in
+\evensidemargin -0.15in
+\textheight 9in
+\topmargin -0.5in
+%%%%%%%%%%%%%%%% end my additions to header
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={Tropical storms and associated risks to accidental, cardiovascular, and respiratory mortality in {[}x{]} United States communities, 1988--2005},
+            colorlinks=true,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+% Pandoc toggle for numbering sections (defaults to be off)
+\setcounter{secnumdepth}{0}
+% Pandoc header
+
+
+\usepackage[nomarkers]{endfloat}
+
+\begin{document}
+\begin{frontmatter}
+
+  \title{Tropical storms and associated risks to accidental, cardiovascular, and
+respiratory mortality in {[}x{]} United States communities, 1988--2005}
+    \author[Colorado State University]{Meilin Yan}
+   \ead{meilin.yan@colostate.edu} 
+  
+    \author[Colorado State University]{Joshua Ferreri}
+   \ead{joshua.m.ferreri@gmail.com} 
+  
+    \author[NASA Marshall Space Flight Center]{Mohammad Z. Al-Hamdan}
+   \ead{mohammad.alhamdan@nasa.gov} 
+  
+    \author[NASA Marshall Space Flight Center]{William L. Crosson}
+   \ead{bcrosson@usra.edu} 
+  
+    \author[University of Michigan]{Seth Guikema}
+   \ead{sguikema@umich.edu} 
+  
+    \author[Johns Hopkins Bloomberg School of Public Health]{Roger D. Peng}
+   \ead{rdpeng@jhu.edu} 
+  
+    \author[Colorado State University]{G. Brooke Anderson\corref{c1}}
+   \ead{brooke.anderson@colostate.edu} 
+   \cortext[c1]{Corresponding Author}
+      \address[Colorado State University]{Department of Environmental \& Radiological Health Sciences, Lake
+Street, Fort Collins, CO, 80525}
+    \address[NASA Marshall Space Flight Center]{Universities Space Research Association, 320 Sparkman Dr., Huntsville,
+AL, 35805}
+    \address[University of Michigan]{Department of Industrial and Operations Engineering, 1205 Beal Ave., Ann
+Arbor, MI, 48109}
+    \address[Johns Hopkins Bloomberg School of Public Health]{Department of Biostatistics, 615 North Wolfe Street, Baltimore, MD,
+21205}
+  
+  \begin{abstract}
+  Here we explore the association between Atlantic basin tropical storms
+  and risks of accidental, cardiovascular, and respiratory mortality in
+  {[}x{]} United States counties between 1987 and 2005. We investigate
+  whether estimated risks differ depending on whether exposure to a storm
+  is determined by distance, rainfall, or maximum wind.
+  
+  We found \ldots{}
+  \end{abstract}
+  
+ \end{frontmatter}
+
+\section{Introduction}\label{introduction}
+
+\paragraph{What we know about tropical storms and mortality
+risks}\label{what-we-know-about-tropical-storms-and-mortality-risks}
+
+The East and Gulf Coasts of the United States are commonly exposed to
+powerful and destructive tropical cyclonic storms. These storms---which
+include hurricanes, tropical storms, and tropical depressions---are
+expected to become stronger and more frequent in the Atlantic with
+climate change (Seneviratne et al. 2012 -- double-check formatting for
+this reference). However, the full scale of health impacts from cyclonic
+storms remains poorly characterized. Most epidemiologic studies of
+cyclonic storms either identify immediate health needs following a
+single storm (rapid needs surveys) (Centers for Disease Control and
+Prevention 2004a; Centers for Disease Control and Prevention 2009b;
+Greenough et al. 2008; Kessler and Hurricane Katrina Community Advisory
+Group and others 2007; Centers for Disease Control and Prevention 1993a;
+Centers for Disease Control and Prevention 2005b; Centers for Disease
+Control and Prevention 2004b; Centers for Disease Control and Prevention
+2006b; Centers for Disease Control and Prevention 2006c; Centers for
+Disease Control and Prevention 2002; Centers for Disease Control and
+Prevention 2000; Centers for Disease Control and Prevention 2006d) or
+generate death and injury tolls based on medical coding (Jani et al.
+2006; Brunkard, Namulanda, and Ratard 2008; Combs et al. 1996; Centers
+for Disease Control and Prevention 2006a). Results from rapid needs
+surveys are difficult to aggregate across storms because survey research
+designs are usually tailored for a specific storm and health need (e.g.,
+health needs of the elderly in three Florida counties following
+Hurricane Charley (Centers for Disease Control and Prevention 2004a)),
+and so are of limited used in generating overall estimates of health
+risks. Death and injury tolls that are based on medical coding (i.e.,
+International Classification of Disease codes of ``disaster-related''
+outcomes (World Health Organization 2012 -- improve reference format for
+this reference)), are more comprehensive than rapid needs surveys, but
+are also difficult to quantitatively aggregate because of large
+variation in criteria used by health officials to classify a health
+outcome as ``disaster-related'' (Combs et al. 1996; Centers for Disease
+Control and Prevention 2006a; Centers for Disease Control and Prevention
+1993b; Combs et al. 1999). For example, medical coding of the health
+impacts of Hurricane Andrew depended on the separate judgments of 24
+different medical examiners in Florida and 64 coroners in Louisiana
+(Combs et al. 1996). Finally, disaster assessments based on medical
+coding may miss increases in rates of common outcomes, like heart
+attacks and respiratory problems, because these commonly occur outside
+of disasters and so are harder for a coroner to distinguish on a
+case-by-case basis as ``disaster-related'', compared to
+well-characterized storm risks like drowning (Centers for Disease
+Control and Prevention 2000; Brunkard, Namulanda, and Ratard 2008; Combs
+et al. 1996; Centers for Disease Control and Prevention 2006a; Centers
+for Disease Control and Prevention 1993b), car accidents (Centers for
+Disease Control and Prevention 2006a; Bourque et al. 2007), falls
+(Centers for Disease Control and Prevention 2006a), cuts (Bourque et al.
+2007), fractures (Bourque et al. 2007), fire injuries (Bourque et al.
+2007), electrocutions (Bourque et al. 2007), and carbon monoxide
+poisoning (Centers for Disease Control and Prevention 2006a; Bourque et
+al. 2007).
+
+There is some evidence that these storms are likely to increase risks of
+mortality and morbidity for many causes, including cardiorespiratory
+causes. For example, four 2004 Florida hurricanes were associated with
+approximately 600 excess deaths (4\% trauma-related; 34\% heart-related;
+19\% cancer-related), a mortality impact underestimated by medical
+coding by a factor of four (McKinney, Houser, and Meyer-Arendt 2011).
+Similarly, emergency department visits increased about 80\% following
+Hurricane Katrina in three of the hardest-hit counties in Mississippi
+(Centers for Disease Control and Prevention 2006d), and nursing home
+mortality rates increased about 70\% in the month after Katrina compared
+to baseline rates (Dosa et al. 2010). Many Katrina evacuees arrived at
+Louisiana shelters with chest pain, shortness of breath, and dehydration
+(Greenough et al. 2008), while evacuees in Texas suffered from
+respiratory problems and infections (Mortensen and Dreyfuss 2008).
+
+Tropical storms bring a number of hazards that can cause direct
+fatalities. For example, tropical storm-associated tornadoes caused over
+300 direct deaths in the United States between 1995 and 2009 (Moore and
+Dixon 2012).
+
+One study of all landfalling US hurricanes between 1970 and 2007 found
+that direct hurricane fatality counts were directly associated with wind
+and rain exposures within a county (Czajkowski, Simmons, and Sutter
+2011).
+
+Over 80\% of the direct tropical storm fatalities in the US between 1970
+and 1999 were drownings (Rappaport 2000). While storm surge was a major
+threat to life from tropical storms in the early 20th century and
+earlier, in more recent tropical storms, inland flooding has caused more
+direct hurricane fatalities (Rappaport 2000).
+
+Studies have also investigated other, non-fatal health risks associated
+with tropical storms in the United States, including adverse birth
+outcomes (Currie and Rossin-Slater 2013), autism prevalence (Kinney et
+al. 2008), \ldots{} .
+
+The worst tropical storms, in terms of direct fatalities, tend to be
+early-in-season storms (Rappaport 2000), which may be because the
+conditions that cause slow-moving storms, which can bring dangerous
+inland rains and flooding, are more likely in June through August
+(Rappaport 2000).
+
+Tropical storm winds can also cause direct fatalities, through
+structural damage, falling trees, and wind-borne debris (Rappaport
+2000).
+
+\paragraph{Limitations of previous
+research}\label{limitations-of-previous-research}
+
+Most research on hurricane-related deaths have focused on direct deaths
+(e.g., Czajkowski, Simmons, and Sutter (2011), Rappaport (2000)).
+``Direct'' deaths associated with a tropical storm include drownings
+(from both storm surge and freshwater flooding) and wind-related deaths
+(e.g., from falling trees or structural damage to a building) (Rappaport
+2000). Typically, these casualty counts are aggregated based on reports,
+and different reports and databases can disagree in the numbers of
+casualities for an event (Rappaport 2000). Storm event databases that
+rely on reporting, including NOAA's Storm Events database, often provide
+casuality estimates that undercount storm-related deaths (Moore and
+Dixon 2012). Subjective decisions are often required in creating
+tropical storm causality datasets based on storm event databases and
+reports (Rappaport 2000).
+
+Indirect hurricane deaths can come from causes like heart attacks, car
+accidents, and electrocutions (Rappaport 2000), but are studied much
+more rarely than direct hurricane deaths.
+
+\paragraph{Direct casualties versus total mortality
+risks}\label{direct-casualties-versus-total-mortality-risks}
+
+\paragraph{Coastal versus inland
+risks}\label{coastal-versus-inland-risks}
+
+Tropical storm hazards can exist well inland of where the storm makes
+landfall. For example, one study of tropical storm-related wind
+exposures found that most states in the eastern United States, even
+those well inland of the cost, have experienced severe winds related to
+tropical storms or decayed tropical storms at some time between 1900 and
+2008 (Kruk et al. 2010). Tropical storms can also cause dangerous inland
+flooding, particularly as storms transition to extratropical {[}right
+word?{]} systems (Halverson 2015; Atallah and Bosart 2003). Further,
+almost half of the wind-related direct hurricane fatalities in the US
+between 1970 and 2008 occurred in inland counties, rather than coastal,
+counties (Czajkowski, Simmons, and Sutter 2011).
+
+A number of historic storms have had extreme impacts well inland from
+the coast, including extreme impacts from rain for Floyd (1999) and
+Allison (2001) and extreme impacts from wind for Hugo (1989) and Fran
+(1996) (Kruk et al. 2010).
+
+While some studies have found evidence of decreasing direct deaths from
+hurricanes over time in the US {[}citations{]}, other studies of more
+recent periods have not found a decreasing trend when inland direct
+deaths are also included in the analysis (Czajkowski, Simmons, and
+Sutter 2011). In present-days periods (e.g., 1970--2007, in one study
+(Czajkowski, Simmons, and Sutter 2011)), many direct hurricane
+fatalities occur in inland, rather than coastal, counties. This is
+particularly true for some storms that have brought dangerous freshwater
+flooding (e.g., Floyd in 1999, Allison in 2001, {[}storms{]}
+{[}citations{]}) or inland winds (e.g., Hugo in 1989, {[}storms{]}
+{[}citations{]}). These storms have not always been particularly strong
+at landfall; for example, Allison (2001) was a tropical storm, rather
+than hurricane, at landfall {[}citation{]}.
+
+In coastal counties, the number of direct hurricane fatalites between
+1970 and 2008 tended to increase at closer distances to the storm's
+center, while the inverse was true for inland counties, with more direct
+fatalities in counties a bit futher from the storm center track
+(Czajkowski, Simmons, and Sutter 2011).
+
+A study of direct tropical storms in the US between 1970 and 1999 found
+only about 25\% of these direct deaths were in coastal counties
+(Rappaport 2000).
+
+\paragraph{Ways of measuring exposure and how they could influence risk
+estimates}\label{ways-of-measuring-exposure-and-how-they-could-influence-risk-estimates}
+
+Some storm hazards are strongly associated with distance both from the
+center of the storm and from the coast. For example, hurricane winds
+typically decay rapidly after the storm makes landfall (Kruk et al.
+2010).
+
+Rains from a tropical storm can cause extreme flooding. This flooding
+can be related to a number of health risks, including problems with
+water quality following the storm, especially if flooding affects
+landfills, wastewater treatment plants, or concentrated animal feedlot
+operations (Mallin and Corbett 2006).
+
+Wind speeds of a hurricane are also directly associated with power
+outages during the storm {[}citation{]}. Power outages can bring a
+number of health-related hazards, both short term (e.g., \ldots{}) and
+longer-term, including from water quality problems that can result from
+wastewater treatment plants losing power (Mallin and Corbett 2006).
+
+Studies of the health risks of hurricanes have classified storm exposure
+in different ways. Some studies have exclusively used distance from the
+storm's track (e.g., Currie and Rossin-Slater (2013), \ldots{}), either
+distance to some point (Currie and Rossin-Slater 2013) or based on
+whether a storm passed within a county's boundaries {[}citations{]}.
+Other studies have used metrics that combined distance with other
+measures, either to initially assign exposure {[}citations{]} or to
+explore effect modification (e.g., Czajkowski, Simmons, and Sutter
+(2011) used distance to assign exposure to a storm, then explored
+whether rainfall or maximum winds modified risks of direct hurricane
+fatalities).
+
+One study found that direct storm deaths were not strongly associated
+with the strength of a storm at landfall, since some of the most
+dangerous storms could be weaker ones that caused extreme inland
+flooding (e.g., Charley in 1998, Alberto in 1994, and Alberto in 1994)
+(Rappaport 2000).
+
+In addition to causing drownings, extreme rains from a tropical storm
+could create dangerous road conditions (Rappaport 2000), which could
+cause or contribute to traffic accidents and could also slow down
+emergency response.
+
+A number of storm hazards are directly associated to distance, either
+from the storm's center or from the point of landfall, including wind
+speed, storm surge, and dangerous waves (Rappaport 2000).
+
+\paragraph{Timing of storms and risks}\label{timing-of-storms-and-risks}
+
+One study found that storms with similar rainfalls cause a more elevated
+streamflow, which is related to flooding, if they occur later in the
+hurricane season, because of seasonal variations in some of the factors
+that modify the relationship between rainfall and flooding risk,
+including vegetation patterns and meteorological conditions (Chen,
+Kumar, and McGlynn 2015); while one other study also discussed that
+flooding risk was reduced early in the hurricane season by the hotter
+conditions, which allow more water evaporation (Mallin and Corbett
+2006), another study discussed that steering currents tend to be weaker
+in the hurricane season, which can cause slower-moving storms and so
+more rain and flooding (Rappaport 2000).
+
+\paragraph{What we do in this study}\label{what-we-do-in-this-study}
+
+Here we explore the association between Atlantic basin tropical storms
+and risks of accidental, cardiovascular, and respiratory mortality in
+{[}x{]} United States counties between 1987 and 2005. We investigate
+whether estimated risks differ depending on whether exposure to a storm
+is determined by distance, rainfall, or maximum wind.
+
+\section{Data and Methods}\label{data-and-methods}
+
+\paragraph{Hurricane track data}\label{hurricane-track-data}
+
+The HURDAT ``best tracks'' data (Jarvinen and Caso 1978) have been used
+in a number of studies, including ones exploring \ldots{},
+{[}citations{]} and development of a new hurricane hazard index
+(Rezapour and Baldock 2014). The extended best tracks data extension of
+HURDAT (Demuth, DeMaria, and Knaff 2006), which we use in this study,
+has been used in studies of hurricane-related inland wind exposure (Kruk
+et al. 2010), \ldots{} {[}citations{]}.
+
+\paragraph{Rain data}\label{rain-data}
+
+In this study, we use precipitation data from the North American Land
+Data Assimilation System, phase 2 (NLDAS-2) (Rui and Mocko 2014) to
+characterize rain-based exposure to tropical storms. The NLDAS-2 data
+integrates satellite-based and land-based monitoring and applies a
+land-surface model to create a reanalysis dataset that is spatially and
+temporally complete across the continental United States (Rui and Mocko
+2014; Al-Hamdan et al. 2014). This data has been used in previous
+research to investigate tropical storms, including in a study of the
+relationship between rainfall and streamflow responses for tropical
+storms in a North Carolina watershed (Chen, Kumar, and McGlynn 2015).
+
+The NLDAS-2 precipitation data is originally provided hourly for a 1/8
+degree grid (Rui and Mocko 2014; Al-Hamdan et al. 2014). To generate
+county-level daily rainfall estimates, we first aggregated data at each
+grid point, after converting the timestamp of each observation to local
+time, to create a daily estimate at the grid point. We then averaged all
+grid points within a county's boundaries to generate a county-level
+average of daily precipitation (Al-Hamdan et al. 2014). This
+county-level precipitation data is publicly available through the US
+Centers for Disease Control's Wide-ranging Online Data for
+Epidemiological Research (WONDER) database (citation for WONDER;
+Al-Hamdan et al. 2014).
+
+\paragraph{Wind data}\label{wind-data}
+
+\paragraph{Health data}\label{health-data}
+
+The mortality data were obtained from the National Center for Health
+Statistics and include daily mortality counts, aggregated by community,
+for 108 United States communities (1987--2005), including {[}x{]}
+communities with exposure based on at least one metric to at least one
+tropical storm over the study period ({[}map{]}). For each community, we
+obtained daily counts throughout the study period for accidental (ICD
+{[}x{]}), cardiovascular (ICD {[}x{]}), and respiratory (ICD {[}x{]})
+deaths.
+
+\paragraph{Assigning exposure based on distance-, rain-, and
+wind-related
+metrics}\label{assigning-exposure-based-on-distance--rain--and-wind-related-metrics}
+
+Tropical storm exposure can be assigned at the city level in a variety
+of ways, and models may be sensitive to the method of assignment. For
+example, one way to assign exposure is to consider a community
+``storm-affected''" on a given day if a storm's track has passed within
+a certain distance (e.g., 100 kilometers) of the community's center;
+another way is to consider a community ``storm-affected''" if rainfall
+surpassed a certain amount (e.g., 75 millimeters) on days within a
+certain window of when a storm track passed within a certain distance of
+the city center. As part of this research, we investigate the
+sensitivity of the models to several reasonable storm exposure metrics.
+
+For each storm, we interpolated tracks from the 6-hour synoptic time
+measurements down to 15-minute increments, using a linear interpolation
+between observed locations.
+
+To determine the distance between each county and a storm at the storm's
+closest approach to the county, we first obtained latitude and longitude
+coordinates of each study county's population mean center as of the 2010
+US Census {[}citation{]}. We calculated the distance between each county
+center and each 15-minute storm location using great circle distance,
+assuming an Earth radius of \ldots{} {[}sp citation{]}. We found the
+minimum distance of these distance measurements for each study county
+for the storm and recorded both the distance and time of this point in
+the storm's tracks as the closest distance and closest time for the
+county. To enable pairing with rain and health data, we converted the
+closest time to local time for the county using timezone designations
+based on the Olson / IANA database {[}countytimezone citation, Olson /
+IANA database citation{]}. For study communities that are aggregations
+of multiple counties (e.g., New York, NY, includes the counties of
+\ldots{}), we determined both the mean of all county-specific closest
+distances and the minimum of the distance for any of the community's
+counties (for single-county communities, these values both equal the
+simple closest distance between the county and the storm).
+
+\paragraph{Methods}\label{methods}
+
+By increasing the study power through a national, multi-year analysis,
+this study is able to investigate: (1) susceptibility at the individual
+level (by age, gender, race) (2) susceptibility at the community level
+(by community socioeconomic characteristics); and (3) physical
+characteristics that make a storm more dangerous to health (wind speed,
+rainfall).
+
+To test differences in susceptibility by individual characteristics, we
+modeled overall storm effects with data stratified by age and cause of
+death. To test whether community-level characteristics modify average
+storm-related health risks, we incorporated community-level
+characteristics into the second-level of the pooled two-level normal
+independent sampling estimation of the main model results. These
+community-level characteristics included measures from the US Census
+{[}citation for county data{]}, including unemployment rate and racial
+distribution, as well as measures of whether or not a city is coastal
+{[}citation, maybe NOAA's ``Spatial Trends in Coastal
+Socioeconomics''{]}.
+
+To determine whether certain storm characteristics are associated with
+more severe health risks, we estimated the health effects of each
+individual storm and then used a Bayesian framework (Everson and Morris
+2000) to pool these storm-specific effect estimates while incorporating
+three storm characteristics as potential effect modifiers: storm
+strength (e.g.~Category 1 Hurricane, Tropical Storm, etc.), total
+rainfall within the affected community, and maximum wind speed within
+the affected community.
+
+\section{Results}\label{results}
+
+\paragraph{Exposure to tropical storms in study
+communities}\label{exposure-to-tropical-storms-in-study-communities}
+
+\section{Discussion}\label{discussion}
+
+\paragraph{Risks from tropical storms}\label{risks-from-tropical-storms}
+
+One study found that hurricanes in Texas between 1996 and 2008 were
+significantly associated with some adverse birth outcomes (need for
+assisted ventilation for more than 30 minutes, meconium aspiration
+syndrome), but not with others (gestation, low birth weight) (Currie and
+Rossin-Slater 2013). While this study found that hurricane exposure was
+positively associated with risk of some adverse birth outcomes, their
+analysis suggested that this association was likely not caused by a
+disruption of medical services related to the storm (Currie and
+Rossin-Slater 2013). They suggest the possibility that the observed
+risks might be associated with increased stress during pregnancy for
+women exposed to storms (Currie and Rossin-Slater 2013). Another study
+found an increase in autism prevalence associated with exposure to
+hurricanes in Louisiana between 1980 and 1995 (Kinney et al. 2008); this
+study also hypothesizes that this association might be related to
+storm-related stress.
+
+Health risks from tropical storms might be modified by the vulnerability
+of the location (e.g., flooding vulnerability of a county) or by
+vulnerability factors in the popluation (e.g., high poverty levels)
+(Kinney et al. 2008).
+
+\paragraph{Variation in risks based on tropical storm exposure
+metric}\label{variation-in-risks-based-on-tropical-storm-exposure-metric}
+
+Different metrics of exposure can identify different storm-related
+hazards. For example, slow-moving storms are associated with increased
+risk of dangerous rain and flooding (Halverson 2015), but decreased risk
+of dangerous inland winds (Kruk et al. 2010).
+
+One study found that a metric of hurricane strength that incorporated
+rain, in addition to a storm's intensity as measured by wind speed, was
+more strongly associated with the number of {[}direct?{]} deaths and
+cost of storm-related damage for US landfalling hurricanes between 2003
+and 2012 (excluding Hurricanes Katrina and Sandy) than a metric that
+only used wind speed (Rezapour and Baldock 2014).
+
+One study found that, once counties were identified as ``exposed'' based
+on a distance-based metric, county-level hurricane direct fatalities
+increased as the total rainfall and maximum windspeeds of the storm in
+the county increased (Czajkowski, Simmons, and Sutter 2011). However,
+this study also found that their distance-based criteria likely excluded
+some counties that experienced dangerous exposures and direct hurricane
+fatalities (Czajkowski, Simmons, and Sutter 2011).
+
+\paragraph{Risks near the coast versus
+inland}\label{risks-near-the-coast-versus-inland}
+
+While some tropical storm hazards (waves, storm surge) occur essentially
+exclusively at the coast, other hazards can occur well inland from
+landfall. For example, fatal tropical storm-related hurricanes in the US
+occur most commonly when a high-intensity storm begins to decay inland
+of landfall (Moore and Dixon 2012).
+
+\paragraph{Limitations with distance-based
+exposure}\label{limitations-with-distance-based-exposure}
+
+Many of the hazards caused by tropical storms can occur far away from
+the storm's center path, including tornadoes, which are most common at
+200--500 kilometers from the storm's center (Moore and Dixon 2012).
+
+\paragraph{Limitations with rain-based
+exposure}\label{limitations-with-rain-based-exposure}
+
+Storms with the same amount of rainfall can vary substantially in
+storm-related streamflow responses (Chen, Kumar, and McGlynn 2015).
+Since tropical storm rains likely cause threats to health largely
+through flood hazards, a more direct measure of flooding from storms
+might provide a more specific measure of when a community experiences a
+dangerous exposure to a tropical storm.
+
+Some storms move very slowly, and these tend to be the storms associated
+with heavy rainfall (Medlin, Kimball, and Blackwell 2007). It can be
+hard to determine an appropriate range of days to include when
+calculating storm-related rainfalls. Here, we use a three-day window,
+centered on the day when the storm was closest to the county. However,
+other studies have used longer periods to try to fully characterize
+rainfall for slow-moving storms; for example, one study used a period of
+over four days to estimate total rain for Hurricane Danny in 1997
+(Medlin, Kimball, and Blackwell 2007).
+
+\paragraph{Limitations with wind-based
+exposure}\label{limitations-with-wind-based-exposure}
+
+The wind-based intensity of a hurricane can be strongly associated with
+the amount of property damage caused by a hurricane (Pielke and Landsea
+1998). However, wind intensity of a storm might not be as strongly
+associated with health risks, particularly for indirect deaths.
+
+While many studies of the health impacts of tropical storms have used
+wind estimates based on wind models that assumed symmetric decay of
+winds on either side of the storm's tracks (e.g., Czajkowski, Simmons,
+and Sutter (2011), \ldots{}), here we used wind models that attempted to
+capture the asymmetric nature of hurricane winds.
+
+\paragraph{Further research}\label{further-research}
+
+Health risks associated with a cyclonic storm might be aggravated by the
+infrastructure damage caused by the storm. Infrastructure damage outside
+of storms can bring substantial health risks. For example, 90 excess
+deaths were associated with the 2003 Northeastern blackout in New York,
+NY, mostly from cardiovascular causes (Anderson and Bell 2012). During a
+storm, infrastructure damage may aggravate health risks. Studies of
+specific hurricanes have found that infrastructure damage can limit
+access to medications, health facilities, food, and water (Centers for
+Disease Control and Prevention 2009b; Centers for Disease Control and
+Prevention 1993a; Centers for Disease Control and Prevention 2005b;
+Centers for Disease Control and Prevention 2004b; Centers for Disease
+Control and Prevention 2006d; Smith 1992; Silverman et al. 1995); create
+dangerous conditions in hospitals (Brunkard, Namulanda, and Ratard 2008;
+Silverman et al. 1995); and cause carbon monoxide poisonings (Centers
+for Disease Control and Prevention 2000; Centers for Disease Control and
+Prevention 2006d; Bourque et al. 2007; Centers for Disease Control and
+Prevention 2005a; Centers for Disease Control and Prevention 2009a).
+Flooding from Tropical Storm Allison in 2001 closed or debilitated nine
+hospitals in Houston, TX, substantially reducing the city's hospital bed
+capacity and overwhelming remaining emergency departments (D'Amore and
+Hardin 2005). Hurricane Wilma (2005) caused power outages for about 3
+million residences (Centers for Disease Control and Prevention 2006c);
+Hurricane Ike (2008) also caused outages for about 3 million residences,
+and in parts of Houston service was out for weeks (Centers for Disease
+Control and Prevention 2009b). Storm damage can also increase exposure
+to environmental health hazards---flooding from Hurricane Floyd closed
+over 20 water treatment plants and contaminated local water sources with
+untreated hog waste (Setzer and Domino 2004). Future research could
+investigate whether storm health risks are aggravated by storm-related
+road damage and power outages.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\hypertarget{ref-AlHamdan2014}{}
+Al-Hamdan, Mohammad Z, William L Crosson, Sigrid A Economou, Maurice G
+Estes Jr, Sue M Estes, Sarah N Hemmings, Shia T Kent, et al. 2014.
+``Environmental Public Health Applications Using Remotely Sensed Data.''
+\emph{Geocarto International} 29 (1): 85--98.
+doi:\href{https://doi.org/10.1080/10106049.2012.715209}{10.1080/10106049.2012.715209}.
+
+\hypertarget{ref-Anderson2012}{}
+Anderson, G Brooke, and Michelle L Bell. 2012. ``Lights Out: Impact of
+the August 2003 Power Outage on Mortality in New York, NY.''
+\emph{Epidemiology} 23 (2): 189.
+
+\hypertarget{ref-Atallah2003}{}
+Atallah, Eyad H., and Lance F. Bosart. 2003. ``The Extratropical
+Transition and Precipitation Distribution of Hurricane Floyd (1999).''
+\emph{Monthly Weather Review} 131: 1063--81.
+
+\hypertarget{ref-Bourque2007}{}
+Bourque, Linda B, Judith M Siegel, Megumi Kano, and Michele M Wood.
+2007. ``Morbidity and Mortality Associated with Disasters.'' In
+\emph{Handbook of Disaster Research}, 97--112. Springer.
+
+\hypertarget{ref-Brunkard2008}{}
+Brunkard, Joan, Gonza Namulanda, and Raoult Ratard. 2008. ``Hurricane
+Katrina Deaths, Louisiana, 2005.'' \emph{Disaster Medicine and Public
+Health Preparedness} 2 (04): 215--23.
+
+\hypertarget{ref-Centers1993Andrew}{}
+Centers for Disease Control and Prevention. 1993a. ``Comprehensive
+Assessment of Health Needs 2 Months After Hurricane Andrew--Dade County,
+Florida, 1992.'' \emph{MMWR} 42 (22): 434.
+
+\hypertarget{ref-Centers1993Andrew2}{}
+---------. 1993b. ``Injuries and Illnesses Related to Hurricane
+Andrew--Louisiana, 1992.'' \emph{MMWR} 42 (13): 242--4.
+
+\hypertarget{ref-Centers2000Floyd}{}
+---------. 2000. ``Morbidity and Mortality Associated with Hurricane
+Floyd--North Carolina, September-October 1999.'' \emph{MMWR} 49 (17):
+369.
+
+\hypertarget{ref-Centers2002Allison}{}
+---------. 2002. ``Tropical Storm Allison Rapid Needs
+Assessment--Houston, Texas, June 2001.'' \emph{MMWR} 51 (17): 365.
+
+\hypertarget{ref-Centers2004Charley}{}
+---------. 2004a. ``Rapid Assessment of the Needs and Health Status of
+Older Adults After Hurricane Charley--Charlotte, DeSoto, and Hardee
+Counties, Florida, August 27-31, 2004.'' \emph{MMWR} 53 (36): 837--40.
+
+\hypertarget{ref-Centers2004Isabel}{}
+---------. 2004b. ``Rapid Community Health and Needs Assessments After
+Hurricanes Isabel and Charley--North Carolina, 2003-2004.'' \emph{MMWR}
+53 (36): 840.
+
+\hypertarget{ref-Centers2005CO}{}
+---------. 2005a. ``Carbon Monoxide Poisoning from Hurricane-Associated
+Use of Portable Generators--Florida, 2004.'' \emph{MMWR} 54 (28):
+697--700.
+
+\hypertarget{ref-Centers2005Four}{}
+---------. 2005b. ``Epidemiologic Assessment of the Impact of Four
+Hurricanes--Florida, 2004.'' \emph{MMWR} 54 (28): 693--97.
+
+\hypertarget{ref-Centers2006Katrina3}{}
+---------. 2006a. ``Mortality Associated with Hurricane Katrina--Florida
+and Alabama, August-October 2005.'' \emph{MMWR} 55 (9): 239--42.
+
+\hypertarget{ref-Centers2006Katrina}{}
+---------. 2006b. ``Rapid Community Needs Assessment After Hurricane
+Katrina--Hancock County, Mississippi, September 14-15, 2005.''
+\emph{MMWR} 55 (9): 234--36.
+
+\hypertarget{ref-Centers2006Wilma}{}
+---------. 2006c. ``Rapid Needs Assessment of Two Rural Communities
+After Hurricane Wilma--Hendry County, Florida, November 1-2, 2005.''
+\emph{MMWR} 55 (15): 429--31.
+
+\hypertarget{ref-Centers2006Katrina2}{}
+---------. 2006d. ``Surveillance for Illness and Injury After Hurricane
+Katrina--three Counties, Mississippi, September 5-October 11, 2005.''
+\emph{MMWR} 55 (9): 231--34.
+
+\hypertarget{ref-Centers2009CO}{}
+---------. 2009a. ``Carbon Monoxide Exposures After Hurricane
+Ike--Texas, September 2008.'' \emph{MMWR} 58 (31): 845--49.
+
+\hypertarget{ref-Centers2009Ike}{}
+---------. 2009b. ``Hurricane Ike Rapid Needs Assessment-Houston, Texas,
+September 2008.'' \emph{MMWR} 58 (38): 1066--71.
+
+\hypertarget{ref-Chen2015}{}
+Chen, Xing, Mukesh Kumar, and Brian L. McGlynn. 2015. ``Variations in
+Streamflow Response to Large Hurricane-Season Storms in a Southeastern
+U.S. Watershed.'' \emph{Journal of Hydrometeorology} 16: 55--69.
+doi:\href{https://doi.org/10.1175/JHM-D-14-0044.1}{10.1175/JHM-D-14-0044.1}.
+
+\hypertarget{ref-Combs1996}{}
+Combs, Debra L, R Gibson Parrish, SCOTT JN McNabb, and Joseph H Davis.
+1996. ``Deaths Related to Hurricane Andrew in Florida and Louisiana,
+1992.'' \emph{International Journal of Epidemiology} 25 (3): 537--44.
+
+\hypertarget{ref-Combs1999}{}
+Combs, Debra L, Lynn E Quenemoen, R Gibson Parrish, and Joseph H Davis.
+1999. ``Assessing Disaster-Attributed Mortality: Development and
+Application of a Definition and Classification Matrix.''
+\emph{International Journal of Epidemiology} 28 (6): 1124--9.
+
+\hypertarget{ref-Currie2013}{}
+Currie, Janet, and Maya Rossin-Slater. 2013. ``Weathering the Storm:
+Hurricanes and Birth Outcomes.'' \emph{Journal of Health Economics} 32:
+487--503.
+doi:\href{https://doi.org/10.1016/j.jhealeco.2013.01.004}{10.1016/j.jhealeco.2013.01.004}.
+
+\hypertarget{ref-Czajkowski2011}{}
+Czajkowski, Jeffrey, Kevin Simmons, and Daniel Sutter. 2011. ``An
+Analysis of Coastal and Inland Fatalities in Landfalling US
+Hurricanes.'' \emph{Natural Hazards} 59: 1513--31.
+doi:\href{https://doi.org/10.1007/s11069-011-9849-x}{10.1007/s11069-011-9849-x}.
+
+\hypertarget{ref-Demuth2006}{}
+Demuth, Julie L, Mark DeMaria, and John A Knaff. 2006. ``Improvement of
+Advanced Microwave Sounding Unit Tropical Cyclone Intensity and Size
+Estimation Algorithms.'' \emph{Journal of Applied Meteorology and
+Climatology} 45 (11): 1573--81.
+
+\hypertarget{ref-Dosa2010}{}
+Dosa, David, Zhanlian Feng, Kathy Hyer, Lisa M Brown, Kali Thomas, and
+Vincent Mor. 2010. ``Effects of Hurricane Katrina on Nursing Facility
+Resident Mortality, Hospitalization, and Functional Decline.''
+\emph{Disaster Medicine and Public Health Preparedness} 4 (S1):
+S28--S32.
+
+\hypertarget{ref-Damore2005}{}
+D'Amore, Adanto R, and Charles K Hardin. 2005. ``Air Force Expeditionary
+Medical Support Unit at the Houston Floods: Use of a Military Model in
+Civilian Disaster Response.'' \emph{Military Medicine} 170 (2): 103.
+
+\hypertarget{ref-Everson2000}{}
+Everson, Philip J, and Carl N Morris. 2000. ``Inference for Multivariate
+Normal Hierarchical Models.'' \emph{Journal of the Royal Statistical
+Society: Series B (Statistical Methodology)} 62 (2): 399--412.
+
+\hypertarget{ref-Greenough2008}{}
+Greenough, P Gregg, Michael D Lappi, Edbert B Hsu, Sheri Fink, Yu-Hsiang
+Hsieh, Alexander Vu, Clay Heaton, and Thomas D Kirsch. 2008. ``Burden of
+Disease and Health Status Among Hurricane Katrina-- Displaced Persons in
+Shelters: A Population-Based Cluster Sample.'' \emph{Annals of Emergency
+Medicine} 51 (4): 426--32.
+
+\hypertarget{ref-Halverson2015}{}
+Halverson, Jeffrey B. 2015. ``Second Wind: The Deadly and Destructive
+Inland Phase of East Coast Hurricanes.'' \emph{Weatherwise} 68 (2):
+20--27.
+doi:\href{https://doi.org/10.1080/00431672.2015.997562}{10.1080/00431672.2015.997562}.
+
+\hypertarget{ref-Jani2006}{}
+Jani, Asim A, M Fierro, Sarah Kiser, V Ayala-Simms, DH Darby, S Juenker,
+R Storey, Catherine Reynolds, J Marr, and Greg Miller. 2006. ``Hurricane
+Isabel-Related Mortality----Virginia, 2003.'' \emph{Journal of Public
+Health Management and Practice} 12 (1): 97--102.
+
+\hypertarget{ref-Jarvinen1988}{}
+Jarvinen, Brian R., and Eduardo L. Caso. 1978. ``A Tropical Cyclone Data
+Tape for the North Atlantic Basin, 1886-1977: Contents, Limitations, and
+Uses.'' \emph{NOAA Technical Memorandum NWS NHC 6}.
+
+\hypertarget{ref-Kessler2007}{}
+Kessler, Ronald C, and Hurricane Katrina Community Advisory Group and
+others. 2007. ``Hurricane Katrina's Impact on the Care of Survivors with
+Chronic Medical Conditions.'' \emph{Journal of General Internal
+Medicine} 22 (9): 1225--30.
+
+\hypertarget{ref-Kinney2008}{}
+Kinney, Dennis K, Andrea M Miller, David J Crowley, and Erika Gerber.
+2008. ``Autism Prevalence Following Prenatal Exposure to Hurricanes and
+Tropical Storms in Louisiana.'' \emph{Journal of Autism and
+Developmental Disorders} 38 (3). Springer: 481--88.
+
+\hypertarget{ref-Kruk2010}{}
+Kruk, Michael C., Ethan J. Gibney, David H. Levinson, and Michael
+Squires. 2010. ``A Climatology of Inland Winds from Tropical Cyclones
+for the Eastern United States.'' \emph{Journal of Applied Meteorology
+and Climatology} 49: 1538--47.
+doi:\href{https://doi.org/10.1175/2010JAMC2389.1}{10.1175/2010JAMC2389.1}.
+
+\hypertarget{ref-Mallin2006}{}
+Mallin, Michael A., and Catherine A. Corbett. 2006. ``How Hurricane
+Attributes Determine the Extent of Environmental Effects: Multiple
+Hurricanes and Different Coastal Systems.'' \emph{Estuaries and Coasts}
+29 (6A): 1046--61.
+
+\hypertarget{ref-Mckinney2011}{}
+McKinney, Nathan, Chris Houser, and Klaus Meyer-Arendt. 2011. ``Direct
+and Indirect Mortality in Florida During the 2004 Hurricane Season.''
+\emph{International Journal of Biometeorology} 55 (4): 533--46.
+
+\hypertarget{ref-Medlin2007}{}
+Medlin, Jeffrey M., Sytske K. Kimball, and Keith G. Blackwell. 2007.
+``Radar and Rain Gauge Analysis of the Extreme Rainfall During Hurricane
+Danny's (1997) Landfall.'' \emph{Monthly Weather Review} 135: 1869--88.
+
+\hypertarget{ref-Moore2012}{}
+Moore, Todd W., and Richard W. Dixon. 2012. ``Tropical Cyclone-Tornado
+Casualties.'' \emph{Natural Hazards} 61: 621--34.
+doi:\href{https://doi.org/10.1007/s11069-011-0050-z}{10.1007/s11069-011-0050-z}.
+
+\hypertarget{ref-Mortensen2008}{}
+Mortensen, Karoline, and Zachary Dreyfuss. 2008. ``How Many Walked
+Through the Door?: The Effect of Hurricane Katrina Evacuees on Houston
+Emergency Departments.'' \emph{Medical Care} 46 (9): 998--1001.
+
+\hypertarget{ref-Pielke1998}{}
+Pielke, Roger A., and Christopher W. Landsea. 1998. ``Normalized
+Hurricane Damages in the United States: 1925-95.'' \emph{Weather and
+Forecasting} 13: 621--31.
+
+\hypertarget{ref-Rappaport2000}{}
+Rappaport, Edward N. 2000. ``Loss of Life in the United States
+Associated with Recent Atlantic Tropical Cyclones.'' \emph{Bulletin of
+the American Meteorological Society} x: 2065--73.
+
+\hypertarget{ref-Rezapour2014}{}
+Rezapour, Mehdi, and Tom E. Baldock. 2014. ``Classification of Hurricane
+Hazards: The Importance of Rainfall.'' \emph{Weather and Forcasting} 29:
+1319--31.
+
+\hypertarget{ref-Rui2014}{}
+Rui, Hualan, and David Mocko. 2014. ``Readme Document for North America
+Land Data Assimilation System Phase 2 (NLDAS-2) Products.'' In
+\emph{Goddard Earth Sciences Data and Information Services Center}.
+
+\hypertarget{ref-Seneviratne2012}{}
+Seneviratne, SI, N Nicholls, D Easterling, CM Goodess, S Kanae, J
+Kossin, Y Luo, et al. 2012. ``Changes in Climate Extremes and Their
+Impacts on the Natural Physical Environment: An Overview of the IPCC
+SREX Report.'' In \emph{EGU General Assembly Conference Abstracts},
+109--230.
+
+\hypertarget{ref-Setzer2004}{}
+Setzer, Christian, and Marisa Elena Domino. 2004. ``Medicaid Outpatient
+Utilization for Waterborne Pathogenic Illness Following Hurricane
+Floyd.'' \emph{Public Health Reports} 119 (5): 472.
+
+\hypertarget{ref-Silverman1995}{}
+Silverman, Michael A, Michael Weston, Maria Llorente, Charles Beber, and
+Rosa Tam. 1995. ``Lessons Learned from Hurricane Andrew: Recommendations
+for Care of the Elderly in Long-Term Care Facilities.'' \emph{Southern
+Medical Journal} 88 (6): 603--8.
+
+\hypertarget{ref-Smith1992}{}
+Smith, Keith. 1992. \emph{Environmental Hazards: Assessing Risk and
+Reducing Disaster}. Routledge.
+
+\hypertarget{ref-WHO2012}{}
+World Health Organization. 2012. ``International Classification of
+Diseases (ICD).''
+
+\end{document}
+
+
