@@ -2,7 +2,7 @@
 % Please edit documentation in R/MetaReg.R
 \name{pull_city_coef}
 \alias{pull_city_coef}
-\title{Pull Coefficients and Variance-Covariance matrix.}
+\title{Pull Coefficients matrix.}
 \usage{
 pull_city_coef(CityFit)
 }
@@ -10,11 +10,11 @@ pull_city_coef(CityFit)
 \item{CityFit}{A fitted model object.}
 }
 \value{
-A matrix of coefficients/variance-covariance between the parameters
-estimates in the model.
+A matrix of coefficients between the parameters estimates in the
+model.
 }
 \description{
-This function pulls coefficients and variance-covariance matrix from \code{crosspred()}
+This function pulls coefficients matrix from \code{crosspred()}
 object.
 }
 

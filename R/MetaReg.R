@@ -1,12 +1,12 @@
-#' Pull Coefficients and Variance-Covariance matrix.
+#' Pull Coefficients matrix.
 #'
-#' This function pulls coefficients and variance-covariance matrix from \code{crosspred()}
+#' This function pulls coefficients matrix from \code{crosspred()}
 #' object.
 #'
 #' @param CityFit A fitted model object.
 #'
-#' @return A matrix of coefficients/variance-covariance between the parameters
-#' estimates in the model.
+#' @return A matrix of coefficients between the parameters estimates in the
+#' model.
 #'
 #' @export
 pull_city_coef <- function(CityFit){
@@ -14,6 +14,18 @@ pull_city_coef <- function(CityFit){
   return(city_coef)
 }
 
+
+#' Pull Variance-Covariance matrix.
+#'
+#' This function pulls variance-covariance matrix from \code{crosspred()}
+#' object.
+#'
+#' @param CityFit A fitted model object.
+#'
+#' @return A matrix of variance-covariance between the parameters estimates in
+#' the model.
+#'
+#' @export
 pull_city_vcov <- function(CityFit){
   city_vcov <- vcov(CityFit[["city_pred"]])
   return(city_vcov)

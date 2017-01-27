@@ -7,9 +7,11 @@
 #' @inheritParams readStorm
 #' @inheritParams CrossoverData
 #'
-#' @param cause A character vector giving the death outcome used in the model.
-#' @param lag_knots A numeric vector giving the knots for \code{lag} in the
-#' \code{crossbasis()} function.
+#' @param cause A character string giving the death outcome used in the model.
+#' @param lag_fun A character scalar giving the name of the function to be
+#' called for \code{lag}.
+#' @param lag_knots The internal breakpoints defining the spline when using
+#' \code{ns} or \code{bs} for \code{lag_fun} argument.
 #'
 #' @return Prints the abbreviation of city's name and returns a list of
 #' \code{glm()} model object and predicted results by \code{crosspred()}
@@ -23,7 +25,8 @@
 #'
 #' @export
 CityFit <- function(root = c(), criterion = c(), city = c(), cause = "all",
-                    control_ratio = 15, lags = 14, lag_knots = logknots(14, 4),
+                    control_ratio = 15, lags = 14, lag_fun = "ns",
+                    lag_knots = logknots(14, 4),
                     storm_id = NA){
   print(city)
 
@@ -32,7 +35,7 @@ CityFit <- function(root = c(), criterion = c(), city = c(), cause = "all",
 
   cb <- dlnm::crossbasis(df$hurr, lag = c(0, lags),
                          argvar = list(fun = "lin"),
-                         arglag = list(fun = "ns", knots = lag_knots))
+                         arglag = list(fun = lag_fun, knots = lag_knots))
 
   # if this city has only one storm, "stratum" will not be included in the model.
   if(nrow(subset(df, hurr == 1)) == 1){

@@ -5,8 +5,8 @@
 \title{Fit distributed lag model for one city.}
 \usage{
 CityFit(root = c(), criterion = c(), city = c(), cause = "all",
-  control_ratio = 15, lags = 14, lag_knots = logknots(14, 4),
-  storm_id = NA)
+  control_ratio = 15, lags = 14, lag_fun = "ns",
+  lag_knots = logknots(14, 4), storm_id = NA)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -15,15 +15,18 @@ CityFit(root = c(), criterion = c(), city = c(), cause = "all",
 
 \item{city}{A character string giving the abbreviation of city's name.}
 
-\item{cause}{A character vector giving the death outcome used in the model.}
+\item{cause}{A character string giving the death outcome used in the model.}
 
 \item{control_ratio}{A integer vector giving the number of control days for
 one storm day.}
 
 \item{lags}{A integer vector giving number of lagged days for one storm day.}
 
-\item{lag_knots}{A numeric vector giving the knots for \code{lag} in the
-\code{crossbasis()} function.}
+\item{lag_fun}{A character scalar giving the name of the function to be
+called for \code{lag}.}
+
+\item{lag_knots}{The internal breakpoints defining the spline when using
+\code{ns} or \code{bs} for \code{lag_fun} argument.}
 
 \item{storm_id}{A character vector giving the storm ID of one specific storm
 when you want to investigate the effect of this storm only.}

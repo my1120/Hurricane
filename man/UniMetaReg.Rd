@@ -12,7 +12,7 @@ UniMetaReg(city_list = c(), criterion = c(), cause = "all",
 
 \item{criterion}{A character string which could be "rain50", "wind18", etc.}
 
-\item{cause}{A character vector giving the death outcome used in the model.}
+\item{cause}{A character string giving the death outcome used in the model.}
 
 \item{method}{ estimation method: \code{"fixed"} for fixed-effects models, \code{"ml"} or \code{"reml"} for random-effects models fitted through (restricted) maximum likelihood, \code{"mm"} for random-effects models fitted through method of moments, and \code{"vc"} for random-effects models fitted through variance components. See Details below. If \code{"model.frame"}, the model frame is returned, as in \code{\link{lm}} or \code{\link{glm}}.}
 }
