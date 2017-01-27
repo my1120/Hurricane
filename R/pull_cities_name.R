@@ -14,6 +14,6 @@
 pull_cities_name <- function(criterion = c()){
   path <- paste0("exposure/", criterion)
   x <- list.files(path)
-  cities_name <- gsub(".rds", "", x = x)
+  cities_name <- sub(pattern = ".rds", replacement = "", x = x)
   return(cities_name)
 }
