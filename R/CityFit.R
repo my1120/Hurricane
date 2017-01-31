@@ -30,7 +30,6 @@
 CityFit <- function(root, criterion, city, cause = "all",
                     control_ratio = 15, lags = 14,
                     storm_id = NA, arglag){
-  print(city)
 
   df <- CrossoverData(root, criterion, city,
                       control_ratio, lags, storm_id)

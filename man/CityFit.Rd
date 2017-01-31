@@ -4,8 +4,8 @@
 \alias{CityFit}
 \title{Fit distributed lag model for one city.}
 \usage{
-CityFit(root = c(), criterion = c(), city = c(), cause = "all",
-  control_ratio = 15, lags = 14, storm_id = NA, arglag = c())
+CityFit(root, criterion, city, cause = "all", control_ratio = 15,
+  lags = 14, storm_id = NA, arglag)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
