@@ -9,9 +9,5 @@ Description: More about what it does (maybe more than one line)
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Imports:
-dplyr, 
-dlnm,
-lubridate,
-mvmeta
+Imports: 
 RoxygenNote: 5.0.1
