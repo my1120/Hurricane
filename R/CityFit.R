@@ -27,7 +27,7 @@
 #' }
 #'
 #' @export
-CityFit <- function(root, criterion, city, cause = "all",
+CityFit <- function(root = "~/tmp/NMMAPS/", criterion, city, cause = "all",
                     control_ratio = 15, lags = 14,
                     storm_id = NA, arglag){
 

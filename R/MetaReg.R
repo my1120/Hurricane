@@ -55,18 +55,22 @@ pull_city_vcov <- function(CityFit){
 #' \dontrun{
 #' city_list <- c("no", "lkch", "miam", "jckv", "mobi")
 #' meta <- UniMetaReg(city_list = city_list, criterion = "rain75",
-#'                    cause = "accident")
+#'                    cause = "accident",
+#'                    arglag = list(fun = "integer"))
 #' }
 #'
 #' @export
 UniMetaReg <- function(city_list = c(), criterion = c(), cause = "all",
-                       method = "reml"){
+                       arglag, method = "reml"){
 
-  city_fit <- lapply(city_list, CityFit, criterion = criterion, cause = cause)
-  city_coefs <- lapply(city_fit, pull_city_coef)
+  city_fit <-  purrr::map(city_list, function(x) CityFit(criterion = criterion,
+                                                         city = x,
+                                                         cause = cause,
+                                                         arglag = arglag))
+  city_coefs <- purrr::map(city_fit, pull_city_coef)
   city_coefs <- do.call("rbind", city_coefs)
 
-  city_vcovs <- lapply(city_fit, pull_city_vcov)
+  city_vcovs <- purrr::map(city_fit, pull_city_vcov)
 
   meta_fit <- mvmeta::mvmeta(city_coefs ~ 1, S = city_vcovs, method = method)
 
