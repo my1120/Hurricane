@@ -13,7 +13,7 @@
 #' @export
 pull_cities_name <- function(criterion = c()){
   path <- paste0("exposure/", criterion)
-  x <- list.files(path)
-  cities_name <- sub(pattern = ".rds", replacement = "", x = x)
+  px <- list.files(path)
+  cities_name <- tools::file_path_sans_ext(px)
   return(cities_name)
 }
