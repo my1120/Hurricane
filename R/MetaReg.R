@@ -38,6 +38,7 @@ pull_city_vcov <- function(CityFit){
 #' function in the \code{mvmeta} package.
 #'
 #' @inheritParams readStorm
+#' @inheritParams CrossoverData
 #' @inheritParams CityFit
 #' @inheritParams mvmeta::mvmeta
 #'
@@ -55,17 +56,18 @@ pull_city_vcov <- function(CityFit){
 #' \dontrun{
 #' city_list <- c("no", "lkch", "miam", "jckv", "mobi")
 #' meta <- UniMetaReg(city_list = city_list, criterion = "rain75",
-#'                    cause = "accident",
+#'                    cause = "accident", lags = 10,
 #'                    arglag = list(fun = "integer"))
 #' }
 #'
 #' @export
 UniMetaReg <- function(city_list = c(), criterion = c(), cause = "all",
-                       arglag, method = "reml"){
+                       lags = 14, arglag, method = "reml"){
 
   city_fit <-  purrr::map(city_list, function(x) CityFit(criterion = criterion,
                                                          city = x,
                                                          cause = cause,
+                                                         lags = lags,
                                                          arglag = arglag))
   city_coefs <- purrr::map(city_fit, pull_city_coef)
   city_coefs <- do.call("rbind", city_coefs)
@@ -83,6 +85,9 @@ UniMetaReg <- function(city_list = c(), criterion = c(), cause = "all",
 #' This function uses \code{crosspred()} function in the \code{dlnm} package to
 #' predict the
 #'
+#' @inheritParams CrossoverData
+#' @inheritParams CityFit
+#'
 #' @param meta_model A model object of class \code{'mvmeta'}.
 #' @param exposure A numeric vector giving the exposure value for prediction.
 #'
@@ -91,16 +96,17 @@ UniMetaReg <- function(city_list = c(), criterion = c(), cause = "all",
 #' @examples
 #' \dontrun{
 #' exposure <- c(rep(0, 20), 1, rep(0, 20))
-#' pred <- pred_meta(meta_model = meta, exposure = exposure)
+#' pred <- pred_meta(meta_model = meta, exposure = exposure,
+#'                   arglag = list(fun = "ns", knots = logknots(14, 4)))
 #' }
 #'
 #' @export
-pred_meta <- function(meta_model, exposure = c()){
+pred_meta <- function(meta_model, exposure = c(),
+                      lags = 14, arglag){
   hurr_basis <- dlnm::crossbasis(x = exposure,
-                                 lag = c(0, 14),
+                                 lag = c(0, lags),
                                  argvar = list(fun = "lin"),
-                                 arglag = list(fun = "ns",
-                                               knots = dlnm::logknots(14, 4)))
+                                 arglag = arglag)
 
   meta_pred <- crosspred(hurr_basis, coef = coef(meta_model),
                          vcov = vcov(meta_model), model.link = "log",
@@ -108,15 +114,26 @@ pred_meta <- function(meta_model, exposure = c()){
   return(meta_pred)
 }
 
-
-#' Plot the prediction of a meta-regression.
+#' Plot the prediction of a meta-regression for single lag.
 #'
 #' @param meta_pred A \code{'crosspred'} class object.
 #' @param title A character string giving the title of the plot.
 #'
 #' @export
-plot_meta <- function(meta_pred, title = c()){
+plot_meta_sin <- function(meta_pred, title = c()){
   plot(meta_pred, xlab = "Lag",
        ylab = "RR compared to non-storm day",
-       exp = TRUE, ptype = "slices", var = 1, main = title)
+       exp = TRUE, ptype = "slices", var = 1, ci = "bars", main = title)
+}
+
+
+#' Plot the prediction of a meta-regression for spline lag.
+#'
+#' @inheritParams plot_meta_sin
+#'
+#' @export
+plot_meta_spl <- function(meta_pred, title = c()){
+  plot(meta_pred, xlab = "Lag",
+       ylab = "RR compared to non-storm day",
+       exp = TRUE, ptype = "slices", var = 1, ci = "area", main = title)
 }

@@ -4,12 +4,14 @@
 \alias{pred_meta}
 \title{Prediction for a meta-regression}
 \usage{
-pred_meta(meta_model, exposure = c())
+pred_meta(meta_model, exposure = c(), lags = 14, arglag)
 }
 \arguments{
 \item{meta_model}{A model object of class \code{'mvmeta'}.}
 
 \item{exposure}{A numeric vector giving the exposure value for prediction.}
+
+\item{lags}{A integer vector giving number of lagged days for one storm day.}
 }
 \value{
 Returns a list of class \code{'crosspred'}.
@@ -21,7 +23,8 @@ predict the
 \examples{
 \dontrun{
 exposure <- c(rep(0, 20), 1, rep(0, 20))
-pred <- pred_meta(meta_model = meta, exposure = exposure)
+pred <- pred_meta(meta_model = meta, exposure = exposure,
+                  arglag = list(fun = "ns", knots = logknots(14, 4)))
 }
 
 }

@@ -22,15 +22,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' CrossoverData(root = "~/tmp/NMMAPS/", criterion = "rain75",
-#'                        city = "miam",
-#'                        storm_id = "Irene-1999")
+#' CrossoverData(root = "~/tmp/NMMAPS/",
+#'               criterion = "rain75", city = "miam", storm_id = "Irene-1999")
 #' }
 #'
 #' @importFrom dplyr %>%
 #'
 #' @export
-CrossoverData <- function(root = c(), criterion = c(), city = c(),
+CrossoverData <- function(root, criterion, city,
                           control_ratio = 15,
                           lags = 14, storm_id = NA){
 
@@ -105,5 +104,7 @@ CrossoverData <- function(root = c(), criterion = c(), city = c(),
   colnames(be_data) <- colnames(new_df)
 
   df_to_mod <- rbind(be_data, new_df)
+
+  return(df_to_mod)
 }
 

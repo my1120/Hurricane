@@ -4,8 +4,8 @@
 \alias{UniMetaReg}
 \title{Univariate Meta-regression.}
 \usage{
-UniMetaReg(city_list = c(), criterion = c(), cause = "all",
-  method = "reml")
+UniMetaReg(city_list = c(), criterion = c(), cause = "all", lags = 14,
+  arglag, method = "reml")
 }
 \arguments{
 \item{city_list}{A list of abbreviation of cities' names}
@@ -13,6 +13,8 @@ UniMetaReg(city_list = c(), criterion = c(), cause = "all",
 \item{criterion}{A character string which could be "rain50", "wind18", etc.}
 
 \item{cause}{A character string giving the death outcome used in the model.}
+
+\item{lags}{A integer vector giving number of lagged days for one storm day.}
 
 \item{method}{ estimation method: \code{"fixed"} for fixed-effects models, \code{"ml"} or \code{"reml"} for random-effects models fitted through (restricted) maximum likelihood, \code{"mm"} for random-effects models fitted through method of moments, and \code{"vc"} for random-effects models fitted through variance components. See Details below. If \code{"model.frame"}, the model frame is returned, as in \code{\link{lm}} or \code{\link{glm}}.}
 }
@@ -27,7 +29,8 @@ function in the \code{mvmeta} package.
 \dontrun{
 city_list <- c("no", "lkch", "miam", "jckv", "mobi")
 meta <- UniMetaReg(city_list = city_list, criterion = "rain75",
-                   cause = "accident")
+                   cause = "accident", lags = 10,
+                   arglag = list(fun = "integer"))
 }
 
 }

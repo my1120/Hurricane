@@ -4,8 +4,8 @@
 \alias{CrossoverData}
 \title{Generate a case-crossover datasets.}
 \usage{
-CrossoverData(root = c(), criterion = c(), city = c(),
-  control_ratio = 15, lags = 14, storm_id = NA)
+CrossoverData(root, criterion, city, control_ratio = 15, lags = 14,
+  storm_id = NA)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -37,9 +37,8 @@ control days (non-storm days). The data frame will be directly used for
 }
 \examples{
 \dontrun{
-CrossoverData(root = "~/tmp/NMMAPS/", criterion = "rain75",
-                       city = "miam",
-                       storm_id = "Irene-1999")
+CrossoverData(root = "~/tmp/NMMAPS/",
+              criterion = "rain75", city = "miam", storm_id = "Irene-1999")
 }
 
 }
