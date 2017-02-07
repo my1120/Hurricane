@@ -5,7 +5,7 @@
 \title{Univariate Meta-regression.}
 \usage{
 UniMetaReg(city_list = c(), criterion = c(), cause = "all", lags = 14,
-  arglag, method = "reml")
+  arglag, storm_id = NA, method = "reml")
 }
 \arguments{
 \item{city_list}{A list of abbreviation of cities' names}
@@ -15,6 +15,9 @@ UniMetaReg(city_list = c(), criterion = c(), cause = "all", lags = 14,
 \item{cause}{A character string giving the death outcome used in the model.}
 
 \item{lags}{A integer vector giving number of lagged days for one storm day.}
+
+\item{storm_id}{A character vector giving the storm ID of one specific storm
+when you want to investigate the effect of this storm only.}
 
 \item{method}{ estimation method: \code{"fixed"} for fixed-effects models, \code{"ml"} or \code{"reml"} for random-effects models fitted through (restricted) maximum likelihood, \code{"mm"} for random-effects models fitted through method of moments, and \code{"vc"} for random-effects models fitted through variance components. See Details below. If \code{"model.frame"}, the model frame is returned, as in \code{\link{lm}} or \code{\link{glm}}.}
 }

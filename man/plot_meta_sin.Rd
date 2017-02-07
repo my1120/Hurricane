@@ -4,7 +4,7 @@
 \alias{plot_meta_sin}
 \title{Plot the prediction of a meta-regression for single lag.}
 \usage{
-plot_meta_sin(meta_pred, title = c(), ...)
+plot_meta_sin(meta_pred, title = c())
 }
 \arguments{
 \item{meta_pred}{A \code{'crosspred'} class object.}

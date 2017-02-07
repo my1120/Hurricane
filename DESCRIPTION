@@ -8,6 +8,11 @@ Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: GPL-2
 Encoding: UTF-8
-LazyData: true
-Imports: 
+LazyData: TRUE
+Imports:
+ dplyr,
+ dlnm,
+ mvmeta,
+ lubridate
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr

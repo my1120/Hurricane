@@ -62,13 +62,15 @@ pull_city_vcov <- function(CityFit){
 #'
 #' @export
 UniMetaReg <- function(city_list = c(), criterion = c(), cause = "all",
-                       lags = 14, arglag, method = "reml"){
+                       lags = 14, arglag, storm_id = NA,
+                       method = "reml"){
 
   city_fit <-  purrr::map(city_list, function(x) CityFit(criterion = criterion,
                                                          city = x,
                                                          cause = cause,
                                                          lags = lags,
-                                                         arglag = arglag))
+                                                         arglag = arglag,
+                                                         storm_id = storm_id))
   city_coefs <- purrr::map(city_fit, pull_city_coef)
   city_coefs <- do.call("rbind", city_coefs)
 
@@ -104,7 +106,7 @@ UniMetaReg <- function(city_list = c(), criterion = c(), cause = "all",
 pred_meta <- function(meta_model, exposure = c(),
                       lags = 14, arglag){
   hurr_basis <- dlnm::crossbasis(x = exposure,
-                                 lag = c(0, lags),
+                                 lag = c(-2, lags),
                                  argvar = list(fun = "lin"),
                                  arglag = arglag)
 

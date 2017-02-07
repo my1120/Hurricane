@@ -34,7 +34,7 @@ CityFit <- function(root = "~/tmp/NMMAPS/", criterion, city, cause = "all",
   df <- CrossoverData(root, criterion, city,
                       control_ratio, lags, storm_id)
 
-  cb <- dlnm::crossbasis(df$hurr, lag = c(0, lags),
+  cb <- dlnm::crossbasis(df$hurr, lag = c(-2, lags),
                          argvar = list(fun = "lin"),
                          arglag = arglag)
 

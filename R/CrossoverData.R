@@ -32,7 +32,7 @@
 CrossoverData <- function(root, criterion, city,
                           control_ratio = 15,
                           lags = 14, storm_id = NA){
-
+  print(city)
   ## generate the data
   df <- CityStorm(root, criterion, city)
 
@@ -55,7 +55,7 @@ CrossoverData <- function(root, criterion, city,
 
   for(i in 1:nrow(case_dates)){
     ## choose lags of storm days (lag0)
-    lag_dates <- case_dates[i, ]$date + 1:lags
+    lag_dates <- case_dates[i, ]$date + -2:lags
     lag_case <- subset(df, date %in% lag_dates)
 
     ## choose controls for storm days (lag0)
@@ -67,7 +67,7 @@ CrossoverData <- function(root, criterion, city,
     controls <- dplyr::sample_n(control_subset, control_ratio)
 
     ## lagged controls
-    for(j in 1:lags){
+    for(j in 1:(2 + lags)){
       lag_control_dates <- controls$date + j
       lag_control_each <- subset(df, date %in% lag_control_dates)
 
@@ -78,16 +78,16 @@ CrossoverData <- function(root, criterion, city,
       }
     }
 
-    i_stratum <- rbind(case_dates[i, ], lag_case, controls, lag_control)
+    i_stratum <- rbind(lag_case, controls, lag_control)
 
     stratum <- paste("stratum", i, sep = ".")
     i_stratum$stratum <- stratum
 
-    status <- c(rep("case", lags + 1), rep("control", control_ratio*(lags + 1)))
-    # case: 1 storm day + 14 lagged day
+    status <- c(rep("case", lags + 3), rep("control", control_ratio*(lags + 1 + 2)))
+    # case: 1 storm day + 2 previous days + #lags day
     i_stratum$status <- status
 
-    lag <- c(0:lags, rep(0:lags, each = control_ratio))
+    lag <- c(-2:lags, rep(-2:lags, each = control_ratio))
     i_stratum$lag <- lag
 
     if(i == 1){
