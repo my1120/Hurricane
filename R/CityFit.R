@@ -28,11 +28,12 @@
 #'
 #' @export
 CityFit <- function(root = "~/tmp/NMMAPS/", criterion, city, cause = "all",
-                    control_ratio = 15, lags = 14,
+                    control_ratio = 10, lags = 9,
                     storm_id = NA, arglag){
 
   df <- CrossoverData(root, criterion, city,
                       control_ratio, lags, storm_id)
+  df$stratum <- factor(df$stratum)
 
   cb <- dlnm::crossbasis(df$hurr, lag = c(-2, lags),
                          argvar = list(fun = "lin"),
@@ -43,11 +44,13 @@ CityFit <- function(root = "~/tmp/NMMAPS/", criterion, city, cause = "all",
     city_fit <- glm(df[, cause] ~ cb + splines::ns(year, 2),
                     family = quasipoisson(link = log),
                     data = df,
+                    na.action = na.exclude,
                     control = glm.control(epsilon = 10E-8, maxit = 5000))
   }else{
     city_fit <- glm(df[, cause] ~ cb + splines::ns(year, 2) + stratum,
                     family = quasipoisson(link = log),
                     data = df,
+                    na.action = na.exclude,
                     control = glm.control(epsilon = 10E-8, maxit = 5000))
   }
 

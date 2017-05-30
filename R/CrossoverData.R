@@ -26,13 +26,12 @@
 #'               criterion = "rain75", city = "miam", storm_id = "Irene-1999")
 #' }
 #'
-#' @importFrom dplyr %>%
 #'
 #' @export
-CrossoverData <- function(root, criterion, city,
-                          control_ratio = 15,
-                          lags = 14, storm_id = NA){
-  print(city)
+CrossoverData <- function(root = "~/tmp/NMMAPS/", criterion, city,
+                          control_ratio = 10,
+                          lags = 9, storm_id = NA){
+  #print(city)
   ## generate the data
   df <- CityStorm(root, criterion, city)
 
@@ -43,12 +42,17 @@ CrossoverData <- function(root, criterion, city,
     df <- df
   }
 
+  ## exclude the 3 days within any other storm
   df$time <- 1:length(df$hurr)
   cand_control <- unique(c(which(df$hurr == 1) , which(df$hurr == 1) + 1,
                            which(df$hurr == 1) - 1))
 
   df$cand_control <- TRUE
   df$cand_control[cand_control] <- FALSE
+
+  ## exclude the two weeks following 2001-9-11
+  two_week_911 <- seq(as.Date("2001-09-11"),  as.Date("2001-09-11") + 14, by = 1)
+  df$excu_911 <- ifelse(df$date %in% two_week_911, FALSE, TRUE)
 
   case_dates <- subset(df, hurr == 1) # hurr is exposure
   control_dates <- subset(df, hurr == 0)
@@ -63,12 +67,20 @@ CrossoverData <- function(root, criterion, city,
     control_subset <- subset(control_dates,
                              control_dates$year != case_dates[i, ]$year &
                              doy %in% control_range &
-                             cand_control)
+                             cand_control & excu_911)
+
+    ## use a repeat loop to sample controls in order to exclude case day in
+    ## the lagged period of any control.
+    ## but it's possible to have a storm day in the lagged period of the other
+    ## storm day (I don't think it matters).
+    repeat(
+      {
     controls <- dplyr::sample_n(control_subset, control_ratio)
 
     ## lagged controls
-    for(j in 1:(2 + lags)){
-      lag_control_dates <- controls$date + j
+    la_con <- c(-2, -1, 1:lags)
+    for(j in 1:length(la_con)){
+      lag_control_dates <- controls$date + la_con[j]
       lag_control_each <- subset(df, date %in% lag_control_dates)
 
       if(j == 1){
@@ -77,6 +89,12 @@ CrossoverData <- function(root, criterion, city,
         lag_control <- rbind(lag_control, lag_control_each)
       }
     }
+
+    if(all(lag_control$hurr == 0)){
+      break
+    }
+      }
+    )
 
     i_stratum <- rbind(lag_case, controls, lag_control)
 
@@ -87,7 +105,8 @@ CrossoverData <- function(root, criterion, city,
     # case: 1 storm day + 2 previous days + #lags day
     i_stratum$status <- status
 
-    lag <- c(-2:lags, rep(-2:lags, each = control_ratio))
+    lag <- c(-2:lags, rep(0, control_ratio),
+             rep(c(-2, -1, 1:lags), each = control_ratio))
     i_stratum$lag <- lag
 
     if(i == 1){
@@ -102,6 +121,7 @@ CrossoverData <- function(root, criterion, city,
   coln <- ncol(new_df)
   be_data <- as.data.frame(matrix(0, nrow = lags, ncol = coln))
   colnames(be_data) <- colnames(new_df)
+  be_data$date <- seq(as.Date("2008/1/1"), by = "day", length.out = lags)
 
   df_to_mod <- rbind(be_data, new_df)
 

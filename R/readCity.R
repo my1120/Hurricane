@@ -12,7 +12,7 @@
 #' readCity(root = "~/tmp/NMMAPS/", city = "miam")
 #'
 #' @export
-readCity <- function(root = c(), city = c(), collapseAge = TRUE){
+readCity <- function(root = "~/tmp/NMMAPS/", city = c(), collapseAge = TRUE){
   root <- root
   file <- paste(root, city, ".rds", sep = "")
   df <- readRDS(file)

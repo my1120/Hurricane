@@ -15,7 +15,7 @@
 #' CityStorm(root = "~/tmp/NMMAPS/", criterion = "rain75", city = "miam")
 #'
 #' @export
-CityStorm <- function(root = c(), criterion = c(), city = c()){
+CityStorm <- function(root = "~/tmp/NMMAPS/", criterion = c(), city = c()){
   # Get health data
   h.df <- readCity(root, city)
 
@@ -41,7 +41,7 @@ CityStorm <- function(root = c(), criterion = c(), city = c()){
   df$year <- lubridate::year(df$date)
   df$doy <- lubridate::yday(df$date)
 
-  # Total death
+  # Total death (all cause mortality including accident)
   df$all <- df$accident + df$death
 
   return(df)

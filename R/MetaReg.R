@@ -82,6 +82,41 @@ UniMetaReg <- function(city_list = c(), criterion = c(), cause = "all",
 }
 
 
+#' Multivariate meta-regression
+#'
+#' @inheritParams readStorm
+#' @inheritParams CrossoverData
+#' @inheritParams CityFit
+#' @inheritParams mvmeta::mvmeta
+#' @inheritParams pull_cities_var
+#' @param city_var Giving the city-level variable which will be used in the meta-regression.
+#'
+#'
+#' @export
+MultiMetaReg <- function(city_list = c(), criterion = c(), cause = "all",
+                         lags = 14, arglag, storm_id = NA, city_var,
+                         method = "reml"){
+
+  city_fit <-  purrr::map(city_list, function(x) CityFit(criterion = criterion,
+                                                         city = x,
+                                                         cause = cause,
+                                                         lags = lags,
+                                                         arglag = arglag,
+                                                         storm_id = storm_id))
+  city_coefs <- purrr::map(city_fit, pull_city_coef)
+  city_coefs <- do.call("rbind", city_coefs)
+
+  city_vcovs <- purrr::map(city_fit, pull_city_vcov)
+
+  cities_var <- pull_cities_var(city_list)
+  city_pre <- as.matrix(cities_var[, city_var])
+
+  meta_pop <- mvmeta::mvmeta(city_coefs ~ city_pre, S = city_vcovs, method = method)
+
+  return(meta_pop)
+}
+
+
 #' Prediction for a meta-regression
 #'
 #' This function uses \code{crosspred()} function in the \code{dlnm} package to
