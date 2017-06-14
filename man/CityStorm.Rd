@@ -4,7 +4,7 @@
 \alias{CityStorm}
 \title{Merge hurricane exposure to death outcomes.}
 \usage{
-CityStorm(root = c(), criterion = c(), city = c())
+CityStorm(root = "~/tmp/NMMAPS/", criterion = c(), city = c())
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}

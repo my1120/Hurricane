@@ -4,7 +4,7 @@
 \alias{readCity}
 \title{Read NMMAPS data for each city.}
 \usage{
-readCity(root = c(), city = c(), collapseAge = TRUE)
+readCity(root = "~/tmp/NMMAPS/", city = c(), collapseAge = TRUE)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
