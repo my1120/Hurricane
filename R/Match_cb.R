@@ -4,7 +4,7 @@
 #' @inheritParams readCity
 #' @inheritParams readStorm
 #' @inheritParams CityStorm
-#' @inheritParams CrossoverData
+#' @inheritParams Match_data
 #' @inheritParams dlnm::crossbasis
 #'
 #' @return This function returns $crossbasis$ object.
@@ -12,13 +12,13 @@
 #' @importFrom dplyr %>%
 #'
 #' @export
-
-Matched_cb <- function(root = "~/tmp/NMMAPS/", criterion, city,
-                       control_ratio = 10, lags, arglag){
+Match_cb <- function(root = "~/tmp/NMMAPS/", criterion, city,
+                       control_ratio = 10, lags = 7,
+                       arglag = list(fun = "integer")){
 
   # crossbasis with whole datase
   orig_data <- CityStorm(root, criterion, city)
-  orig_cb <- crossbasis(orig_data$hurr, lag = lags,
+  orig_cb <- crossbasis(orig_data$hurr, lag = c(-2, lags),
                         argvar = list(fun = "lin"),
                         arglag = arglag)
 
@@ -27,22 +27,24 @@ Matched_cb <- function(root = "~/tmp/NMMAPS/", criterion, city,
   orig_cb_matr$date <- orig_data$date
 
   # matched dataset
-  matched_date <- CrossoverData(root, criterion, city,
+  matched_date <- Match_data(root, criterion, city,
                                 control_ratio, lags) %>%
                    select(date)
 
 
-  matched_cb <- orig_cb_matr %>%
+  matched_cb_matrix <- orig_cb_matr %>%
     right_join(matched_date, by = "date") %>%
     select(-date) %>%
     as.matrix()
 
   # add attributes to matched_cb
-  matched_dim <- dim(matched_cb)
+  matched_dim <- dim(matched_cb_matrix)
   attr <- attributes(orig_cb)
   attr$dim <- matched_dim
+
+  matched_cb <- matched_cb_matrix
   attributes(matched_cb) <- attr
 
-  return(matched_cb)
+  return(list("cb" = matched_cb, "matrix" = matched_cb_matrix,
+              "attributes" = attr))
 }
-

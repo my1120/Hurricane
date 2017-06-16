@@ -13,6 +13,9 @@ Imports:
  dplyr,
  dlnm,
  mvmeta,
- lubridate
+ lubridate,
+ purrr
+Depends: 
+ R (>= 3.2.3)
 RoxygenNote: 5.0.1
 VignetteBuilder: knitr

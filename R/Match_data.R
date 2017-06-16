@@ -22,15 +22,15 @@
 #'
 #' @examples
 #' \dontrun{
-#' CrossoverData(root = "~/tmp/NMMAPS/",
+#' Match_data(root = "~/tmp/NMMAPS/",
 #'               criterion = "rain75", city = "miam", storm_id = "Irene-1999")
 #' }
 #'
 #'
 #' @export
-CrossoverData <- function(root = "~/tmp/NMMAPS/", criterion, city,
+Match_data <- function(root = "~/tmp/NMMAPS/", criterion, city,
                           control_ratio = 10,
-                          lags = 9, storm_id = NA){
+                          lags = 7, storm_id = NA){
   #print(city)
   ## generate the data
   df <- CityStorm(root, criterion, city)
@@ -118,13 +118,13 @@ CrossoverData <- function(root = "~/tmp/NMMAPS/", criterion, city,
 
   ## rbind a "fake" data frame with lags = 14 rows and same number of columns
   ## as "new_df"
-  coln <- ncol(new_df)
-  be_data <- as.data.frame(matrix(0, nrow = lags, ncol = coln))
-  colnames(be_data) <- colnames(new_df)
-  be_data$date <- seq(as.Date("2008/1/1"), by = "day", length.out = lags)
+  #coln <- ncol(new_df)
+  #be_data <- as.data.frame(matrix(0, nrow = lags, ncol = coln))
+  #colnames(be_data) <- colnames(new_df)
+  #be_data$date <- seq(as.Date("2008/1/1"), by = "day", length.out = lags)
 
-  df_to_mod <- rbind(be_data, new_df)
+  #df_to_mod <- rbind(be_data, new_df)
 
-  return(df_to_mod)
+  return(new_df)
 }
 
