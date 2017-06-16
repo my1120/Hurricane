@@ -44,5 +44,15 @@ CityStorm <- function(root = "~/tmp/NMMAPS/", criterion = c(), city = c()){
   # Total death (all cause mortality including accident)
   df$all <- df$accident + df$death
 
+  # add population
+  county <- readRDS("data/county.rds")
+
+  city_pop <- county %>%
+    mutate(pop = as.numeric(pop)) %>%
+    group_by(city) %>%
+    summarise(pop = sum(pop))
+
+  df$pop <- city_pop$pop[city_pop$city == city]
+
   return(df)
 }
