@@ -10,6 +10,7 @@
 #' counts and information about storms between 1988 to 2005 in this city.
 #'
 #' @importFrom dplyr %>%
+#' @importFrom dplyr mutate
 #'
 #' @examples
 #' CityStorm(root = "~/tmp/NMMAPS/", criterion = "rain75", city = "miam")
@@ -41,6 +42,9 @@ CityStorm <- function(root = "~/tmp/NMMAPS/", criterion = c(), city = c()){
   df$year <- lubridate::year(df$date)
   df$doy <- lubridate::yday(df$date)
 
+  # a scaled variable of year
+  df$year_s <- scale(df$year)
+
   # Total death (all cause mortality including accident)
   df$all <- df$accident + df$death
 
@@ -48,9 +52,9 @@ CityStorm <- function(root = "~/tmp/NMMAPS/", criterion = c(), city = c()){
   county <- readRDS("data/county.rds")
 
   city_pop <- county %>%
-    mutate(pop = as.numeric(pop)) %>%
-    group_by(city) %>%
-    summarise(pop = sum(pop))
+    dplyr::mutate(pop = as.numeric(pop)) %>%
+    dplyr::group_by(city) %>%
+    dplyr::summarise(pop = sum(pop))
 
   df$pop <- city_pop$pop[city_pop$city == city]
 

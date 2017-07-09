@@ -2,12 +2,21 @@
 #'
 #'
 #' @inheritParams Match_cb
+#' @inheritParams readCity
+#' @inheritParams readStorm
+#' @inheritParams CityStorm
+#' @inheritParams Match_data
+#' @inheritParams dlnm::crossbasis
+#'
+#' @return This function returns matched crossbasis for a given citylist.
 #'
 #' @export
-Join_matched_cb <- function(citylist, criterion, control_ratio, lags,
-                            arglag){
+Join_matched_cb <- function(root = "~/tmp/NMMAPS/", citylist, criterion,
+                            control_ratio = 10,
+                            lags = 7,
+                            arglag = list(fun = "integer")){
 
-  cities_cb <- purrr::map(citylist, ~ Match_cb(criterion,
+  cities_cb <- purrr::map(citylist, ~ Match_cb(root, criterion,
                                                city = .,
                                                control_ratio,
                                                lags, arglag))

@@ -18,9 +18,9 @@ Match_cb <- function(root = "~/tmp/NMMAPS/", criterion, city,
 
   # crossbasis with whole datase
   orig_data <- CityStorm(root, criterion, city)
-  orig_cb <- crossbasis(orig_data$hurr, lag = c(-2, lags),
-                        argvar = list(fun = "lin"),
-                        arglag = arglag)
+  orig_cb <- dlnm::crossbasis(orig_data$hurr, lag = c(-2, lags),
+                              argvar = list(fun = "lin"),
+                              arglag = arglag)
 
   obs_n <- nrow(orig_data)
   orig_cb_matr <- as.data.frame(subset(orig_cb, nrow = obs_n))
@@ -28,13 +28,13 @@ Match_cb <- function(root = "~/tmp/NMMAPS/", criterion, city,
 
   # matched dataset
   matched_date <- Match_data(root, criterion, city,
-                                control_ratio, lags) %>%
-                   select(date)
+                             control_ratio, lags) %>%
+                   dplyr::select(date)
 
 
   matched_cb_matrix <- orig_cb_matr %>%
-    right_join(matched_date, by = "date") %>%
-    select(-date) %>%
+    dplyr::right_join(matched_date, by = "date") %>%
+    dplyr::select(-date) %>%
     as.matrix()
 
   # add attributes to matched_cb

@@ -4,7 +4,21 @@
 \alias{Join_matched_cb}
 \title{This function combine $matched crossbasis$.}
 \usage{
-Join_matched_cb(citylist, criterion, control_ratio, lags, arglag)
+Join_matched_cb(root = "~/tmp/NMMAPS/", citylist, criterion,
+  control_ratio = 10, lags = 7, arglag = list(fun = "integer"))
+}
+\arguments{
+\item{root}{The local path where the NMMAPS data is located.}
+
+\item{criterion}{A character string which could be "rain50", "wind18", etc.}
+
+\item{control_ratio}{A integer vector giving the number of control days for
+one storm day.}
+
+\item{lags}{A integer vector giving number of lagged days for one storm day.}
+}
+\value{
+This function returns matched crossbasis for a given citylist.
 }
 \description{
 This function combine $matched crossbasis$.
