@@ -10,7 +10,6 @@
 #' counts and information about storms between 1988 to 2005 in this city.
 #'
 #' @importFrom dplyr %>%
-#' @importFrom dplyr mutate
 #'
 #' @examples
 #' CityStorm(root = "~/tmp/NMMAPS/", criterion = "rain75", city = "miam")

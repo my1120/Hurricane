@@ -14,7 +14,9 @@ Mixed_1 <- function(cb_to_mod, data_to_mod, cause){
                  dow + (1|city),
                data = data_to_mod,
                offset = log(pop),
-               family = poisson(link = "log"))
+               family = poisson(link = "log"),
+               control = glmerControl(optimizer = "bobyqa",
+                                      optCtrl = list(maxfun = 2e5)))
 
   pred <- dlnm::crosspred(cb_to_mod, fit, at = 1)
 
@@ -39,7 +41,9 @@ Mixed_2 <- function(cb_to_mod, data_to_mod, cause){
                  dow + (1|city),
                data = data_to_mod,
                offset = log(pop),
-               family = poisson(link = "log"))
+               family = poisson(link = "log"),
+               control = glmerControl(optimizer = "bobyqa",
+                                      optCtrl = list(maxfun = 2e5)))
 
   pred <- dlnm::crosspred(cb_to_mod, fit, at = 1)
 
