@@ -41,8 +41,8 @@ CityStorm <- function(root = "~/tmp/NMMAPS/", criterion = c(), city = c()){
   df$year <- lubridate::year(df$date)
   df$doy <- lubridate::yday(df$date)
 
-  # a scaled variable of year
-  df$year_s <- scale(df$year)
+  # a scaled variable of year, for mixed-effect model fitting year as a linear term
+ # df$year_s <- scale(df$year)
 
   # Total death (all cause mortality including accident)
   df$all <- df$accident + df$death
