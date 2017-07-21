@@ -5,7 +5,7 @@
 \title{Generate a case-crossover datasets.}
 \usage{
 Match_data(root = "~/tmp/NMMAPS/", criterion, city, control_ratio = 10,
-  lags = 7, storm_id = NA)
+  lag_1 = -2, lag_2 = 7, storm_id = NA)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -17,7 +17,9 @@ Match_data(root = "~/tmp/NMMAPS/", criterion, city, control_ratio = 10,
 \item{control_ratio}{A integer vector giving the number of control days for
 one storm day.}
 
-\item{lags}{A integer vector giving number of lagged days for one storm day.}
+\item{lag_1}{A integer vector giving number of lagged days before a certain storm day.}
+
+\item{lag_2}{A integer vector giving number of lagged days after a certain storm day.}
 
 \item{storm_id}{A character vector giving the storm ID of one specific storm
 when you want to investigate the effect of this storm only.}

@@ -5,7 +5,7 @@
 \title{Select matched observations from original $crossbasis$ matrix.}
 \usage{
 Match_cb(root = "~/tmp/NMMAPS/", criterion, city, control_ratio = 10,
-  lags = 7, arglag = list(fun = "integer"))
+  lag_1 = -2, lag_2 = 7, arglag = list(fun = "integer"))
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -17,7 +17,9 @@ Match_cb(root = "~/tmp/NMMAPS/", criterion, city, control_ratio = 10,
 \item{control_ratio}{A integer vector giving the number of control days for
 one storm day.}
 
-\item{lags}{A integer vector giving number of lagged days for one storm day.}
+\item{lag_1}{A integer vector giving number of lagged days before a certain storm day.}
+
+\item{lag_2}{A integer vector giving number of lagged days after a certain storm day.}
 }
 \value{
 This function returns $crossbasis$ object.

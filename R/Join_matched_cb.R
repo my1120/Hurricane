@@ -13,13 +13,13 @@
 #' @export
 Join_matched_cb <- function(root = "~/tmp/NMMAPS/", citylist, criterion,
                             control_ratio = 10,
-                            lags = 7,
+                            lag_1 = -2, lag_2 = 7,
                             arglag = list(fun = "integer")){
 
   cities_cb <- purrr::map(citylist, ~ Match_cb(root, criterion,
                                                city = .,
                                                control_ratio,
-                                               lags, arglag))
+                                               lag_1, lag_2, arglag))
 
   for(i in 1:length(citylist)){
     city_matrix <- cities_cb[[i]]$matrix

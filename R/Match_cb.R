@@ -13,12 +13,12 @@
 #'
 #' @export
 Match_cb <- function(root = "~/tmp/NMMAPS/", criterion, city,
-                       control_ratio = 10, lags = 7,
+                       control_ratio = 10, lag_1 = -2, lag_2 = 7,
                        arglag = list(fun = "integer")){
 
   # crossbasis with whole datase
   orig_data <- CityStorm(root, criterion, city)
-  orig_cb <- dlnm::crossbasis(orig_data$hurr, lag = c(-2, lags),
+  orig_cb <- dlnm::crossbasis(orig_data$hurr, lag = c(lag_1, lag_2),
                               argvar = list(fun = "lin"),
                               arglag = arglag)
 
@@ -28,7 +28,7 @@ Match_cb <- function(root = "~/tmp/NMMAPS/", criterion, city,
 
   # matched dataset
   matched_date <- Match_data(root, criterion, city,
-                             control_ratio, lags) %>%
+                             control_ratio, lag_1, lag_2) %>%
                    dplyr::select(date)
 
 

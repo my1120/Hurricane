@@ -9,7 +9,8 @@
 #'
 #' @param control_ratio A integer vector giving the number of control days for
 #' one storm day.
-#' @param lags A integer vector giving number of lagged days for one storm day.
+#' @param lag_1 A integer vector giving number of lagged days before a certain storm day.
+#' @param lag_2 A integer vector giving number of lagged days after a certain storm day.
 #' @param storm_id A character vector giving the storm ID of one specific storm
 #' when you want to investigate the effect of this storm only.
 #'
@@ -29,8 +30,8 @@
 #'
 #' @export
 Match_data <- function(root = "~/tmp/NMMAPS/", criterion, city,
-                          control_ratio = 10,
-                          lags = 7, storm_id = NA){
+                          control_ratio = 10, lag_1 = -2,
+                          lag_2 = 7, storm_id = NA){
   #print(city)
   ## generate the data
   df <- CityStorm(root, criterion, city)
@@ -59,7 +60,7 @@ Match_data <- function(root = "~/tmp/NMMAPS/", criterion, city,
 
   for(i in 1:nrow(case_dates)){
     ## choose lags of storm days (lag0)
-    lag_dates <- case_dates[i, ]$date + -2:lags
+    lag_dates <- case_dates[i, ]$date + lag_1:lag_2
     lag_case <- subset(df, date %in% lag_dates)
 
     ## choose controls for storm days (lag0)
@@ -78,7 +79,7 @@ Match_data <- function(root = "~/tmp/NMMAPS/", criterion, city,
     controls <- dplyr::sample_n(control_subset, control_ratio)
 
     ## lagged controls
-    la_con <- c(-2, -1, 1:lags)
+    la_con <- c(lag_1:-1, 1:lag_2)
     for(j in 1:length(la_con)){
       lag_control_dates <- controls$date + la_con[j]
       lag_control_each <- subset(df, date %in% lag_control_dates)
@@ -101,12 +102,12 @@ Match_data <- function(root = "~/tmp/NMMAPS/", criterion, city,
     stratum <- paste("stratum", i, sep = ".")
     i_stratum$stratum <- stratum
 
-    status <- c(rep("case", lags + 3), rep("control", control_ratio*(lags + 1 + 2)))
+    status <- c(rep("case", length(lag_1:lag_2)), rep("control", control_ratio*(length(lag_1:lag_2))))
     # case: 1 storm day + 2 previous days + #lags day
     i_stratum$status <- status
 
-    lag <- c(-2:lags, rep(0, control_ratio),
-             rep(c(-2, -1, 1:lags), each = control_ratio))
+    lag <- c(lag_1:lag_2, rep(0, control_ratio),
+             rep(c(lag_1:-1, 1:lag_2), each = control_ratio))
     i_stratum$lag <- lag
 
     if(i == 1){
@@ -115,15 +116,6 @@ Match_data <- function(root = "~/tmp/NMMAPS/", criterion, city,
       new_df <- rbind(new_df, i_stratum)
     }
   }
-
-  ## rbind a "fake" data frame with lags = 14 rows and same number of columns
-  ## as "new_df"
-  #coln <- ncol(new_df)
-  #be_data <- as.data.frame(matrix(0, nrow = lags, ncol = coln))
-  #colnames(be_data) <- colnames(new_df)
-  #be_data$date <- seq(as.Date("2008/1/1"), by = "day", length.out = lags)
-
-  #df_to_mod <- rbind(be_data, new_df)
 
   return(new_df)
 }

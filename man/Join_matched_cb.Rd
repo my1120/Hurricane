@@ -5,7 +5,8 @@
 \title{This function combine $matched crossbasis$.}
 \usage{
 Join_matched_cb(root = "~/tmp/NMMAPS/", citylist, criterion,
-  control_ratio = 10, lags = 7, arglag = list(fun = "integer"))
+  control_ratio = 10, lag_1 = -2, lag_2 = 7, arglag = list(fun =
+  "integer"))
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -15,7 +16,9 @@ Join_matched_cb(root = "~/tmp/NMMAPS/", citylist, criterion,
 \item{control_ratio}{A integer vector giving the number of control days for
 one storm day.}
 
-\item{lags}{A integer vector giving number of lagged days for one storm day.}
+\item{lag_1}{A integer vector giving number of lagged days before a certain storm day.}
+
+\item{lag_2}{A integer vector giving number of lagged days after a certain storm day.}
 }
 \value{
 This function returns matched crossbasis for a given citylist.
