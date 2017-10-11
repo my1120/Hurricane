@@ -11,7 +11,8 @@
 #' @return This function returns matched crossbasis for a given citylist.
 #'
 #' @export
-Join_matched_cb <- function(root = "~/tmp/NMMAPS/", citylist, criterion,
+Join_matched_cb <- function(root = "~/Documents/NMMAPS/", citylist, criterion,
+                            collapseAge = TRUE, age_cat = NULL,
                             control_ratio = 10,
                             lag_1 = -2, lag_2 = 7,
                             arglag = list(fun = "integer")){
@@ -19,7 +20,8 @@ Join_matched_cb <- function(root = "~/tmp/NMMAPS/", citylist, criterion,
   cities_cb <- purrr::map(citylist, ~ Match_cb(root, criterion,
                                                city = .,
                                                control_ratio,
-                                               lag_1, lag_2, arglag))
+                                               lag_1, lag_2, arglag,
+                                               collapseAge, age_cat))
 
   for(i in 1:length(citylist)){
     city_matrix <- cities_cb[[i]]$matrix

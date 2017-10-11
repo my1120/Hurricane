@@ -4,7 +4,8 @@
 \alias{CityStorm}
 \title{Merge hurricane exposure to death outcomes.}
 \usage{
-CityStorm(root = "~/tmp/NMMAPS/", criterion = c(), city = c())
+CityStorm(root = "~/Documents/NMMAPS/", criterion = c(), city = c(),
+  collapseAge = TRUE)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -12,6 +13,9 @@ CityStorm(root = "~/tmp/NMMAPS/", criterion = c(), city = c())
 \item{criterion}{A character string which could be "rain50", "wind18", etc.}
 
 \item{city}{A character string giving the abbreviation of city's name.}
+
+\item{collapseAge}{Logic value specifying whether to aggregate records based
+on age group.}
 }
 \value{
 This function return a time-series dataframe containing daily death
@@ -22,7 +26,6 @@ This function merges the two datasets created by readCity() function and
 readStorm() function for one city by date.
 }
 \examples{
-CityStorm(root = "~/tmp/NMMAPS/", criterion = "rain75", city = "miam")
+CityStorm(root = "~/Documents/NMMAPS/", criterion = "rain75", city = "miam")
 
 }
-

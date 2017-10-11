@@ -4,7 +4,8 @@
 \alias{readCity}
 \title{Read NMMAPS data for each city.}
 \usage{
-readCity(root = "~/tmp/NMMAPS/", city = c(), collapseAge = TRUE)
+readCity(root = "~/Documents/NMMAPS/", city = c(), collapseAge = TRUE,
+  age_cat = NULL)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -13,6 +14,8 @@ readCity(root = "~/tmp/NMMAPS/", city = c(), collapseAge = TRUE)
 
 \item{collapseAge}{Logic value specifying whether to aggregate records based
 on age group.}
+
+\item{age_cat}{A character string giving the selected age categories.}
 }
 \value{
 This function returns a time-series dataframe containing date, death counts,
@@ -22,7 +25,6 @@ etc.
 Read NMMAPS data for each city.
 }
 \examples{
-readCity(root = "~/tmp/NMMAPS/", city = "miam")
+readCity(root = "~/Documents/NMMAPS/", city = "miam")
 
 }
-

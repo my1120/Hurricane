@@ -23,18 +23,21 @@
 #'
 #' @examples
 #' \dontrun{
-#' Match_data(root = "~/tmp/NMMAPS/",
+#' Match_data(root = "~/Documents/NMMAPS/",
 #'               criterion = "rain75", city = "miam", storm_id = "Irene-1999")
 #' }
 #'
 #'
 #' @export
-Match_data <- function(root = "~/tmp/NMMAPS/", criterion, city,
+Match_data <- function(root = "~/Documents/NMMAPS/", criterion, city,
                           control_ratio = 10, lag_1 = -2,
-                          lag_2 = 7, storm_id = NA){
+                          lag_2 = 7, storm_id = NA, seed = 1235,
+                       collapseAge = TRUE){
+  set.seed(seed)
+
   #print(city)
   ## generate the data
-  df <- CityStorm(root, criterion, city)
+  df <- CityStorm(root, criterion, city, collapseAge)
 
   if(!is.na(storm_id)){
     ## exclude other storms

@@ -12,12 +12,13 @@
 #' @importFrom dplyr %>%
 #'
 #' @export
-Match_cb <- function(root = "~/tmp/NMMAPS/", criterion, city,
+Match_cb <- function(root = "~/Documents/NMMAPS/", criterion, city,
                        control_ratio = 10, lag_1 = -2, lag_2 = 7,
-                       arglag = list(fun = "integer")){
+                       arglag = list(fun = "integer"),
+                     collapseAge = TRUE, age_cat = NULL){
 
   # crossbasis with whole datase
-  orig_data <- CityStorm(root, criterion, city)
+  orig_data <- CityStorm(root, criterion, city, collapseAge, age_cat)
   orig_cb <- dlnm::crossbasis(orig_data$hurr, lag = c(lag_1, lag_2),
                               argvar = list(fun = "lin"),
                               arglag = arglag)

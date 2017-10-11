@@ -4,14 +4,19 @@
 \alias{Join_matched_cb}
 \title{This function combine $matched crossbasis$.}
 \usage{
-Join_matched_cb(root = "~/tmp/NMMAPS/", citylist, criterion,
-  control_ratio = 10, lag_1 = -2, lag_2 = 7, arglag = list(fun =
-  "integer"))
+Join_matched_cb(root = "~/Documents/NMMAPS/", citylist, criterion,
+  collapseAge = TRUE, age_cat = NULL, control_ratio = 10, lag_1 = -2,
+  lag_2 = 7, arglag = list(fun = "integer"))
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
 
 \item{criterion}{A character string which could be "rain50", "wind18", etc.}
+
+\item{collapseAge}{Logic value specifying whether to aggregate records based
+on age group.}
+
+\item{age_cat}{A character string giving the selected age categories.}
 
 \item{control_ratio}{A integer vector giving the number of control days for
 one storm day.}
@@ -19,6 +24,8 @@ one storm day.}
 \item{lag_1}{A integer vector giving number of lagged days before a certain storm day.}
 
 \item{lag_2}{A integer vector giving number of lagged days after a certain storm day.}
+
+\item{arglag}{ lists of arguments to be passed to the function \code{\link{onebasis}} for generating the two basis matrices for predictor and lags, respectively. See Details below.}
 }
 \value{
 This function returns matched crossbasis for a given citylist.
@@ -26,4 +33,3 @@ This function returns matched crossbasis for a given citylist.
 \description{
 This function combine $matched crossbasis$.
 }
-

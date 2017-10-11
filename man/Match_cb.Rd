@@ -4,8 +4,9 @@
 \alias{Match_cb}
 \title{Select matched observations from original $crossbasis$ matrix.}
 \usage{
-Match_cb(root = "~/tmp/NMMAPS/", criterion, city, control_ratio = 10,
-  lag_1 = -2, lag_2 = 7, arglag = list(fun = "integer"))
+Match_cb(root = "~/Documents/NMMAPS/", criterion, city, control_ratio = 10,
+  lag_1 = -2, lag_2 = 7, arglag = list(fun = "integer"),
+  collapseAge = TRUE, age_cat = NULL)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -20,6 +21,13 @@ one storm day.}
 \item{lag_1}{A integer vector giving number of lagged days before a certain storm day.}
 
 \item{lag_2}{A integer vector giving number of lagged days after a certain storm day.}
+
+\item{arglag}{ lists of arguments to be passed to the function \code{\link{onebasis}} for generating the two basis matrices for predictor and lags, respectively. See Details below.}
+
+\item{collapseAge}{Logic value specifying whether to aggregate records based
+on age group.}
+
+\item{age_cat}{A character string giving the selected age categories.}
 }
 \value{
 This function returns $crossbasis$ object.
@@ -27,4 +35,3 @@ This function returns $crossbasis$ object.
 \description{
 Select matched observations from original $crossbasis$ matrix.
 }
-

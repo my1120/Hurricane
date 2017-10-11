@@ -4,8 +4,9 @@
 \alias{Match_data}
 \title{Generate a case-crossover datasets.}
 \usage{
-Match_data(root = "~/tmp/NMMAPS/", criterion, city, control_ratio = 10,
-  lag_1 = -2, lag_2 = 7, storm_id = NA)
+Match_data(root = "~/Documents/NMMAPS/", criterion, city,
+  control_ratio = 10, lag_1 = -2, lag_2 = 7, storm_id = NA,
+  seed = 1235, collapseAge = TRUE)
 }
 \arguments{
 \item{root}{The local path where the NMMAPS data is located.}
@@ -23,6 +24,9 @@ one storm day.}
 
 \item{storm_id}{A character vector giving the storm ID of one specific storm
 when you want to investigate the effect of this storm only.}
+
+\item{collapseAge}{Logic value specifying whether to aggregate records based
+on age group.}
 }
 \value{
 This function returns a dataframe with first \code{l} (l is equal to
@@ -39,10 +43,9 @@ control days (non-storm days). The data frame will be directly used for
 }
 \examples{
 \dontrun{
-Match_data(root = "~/tmp/NMMAPS/",
+Match_data(root = "~/Documents/NMMAPS/",
               criterion = "rain75", city = "miam", storm_id = "Irene-1999")
 }
 
 
 }
-

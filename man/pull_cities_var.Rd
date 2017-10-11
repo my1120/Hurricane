@@ -15,4 +15,3 @@ This function returns a dataframe giving city-level variables for all the cities
 \description{
 Pull city-level characteristics
 }
-

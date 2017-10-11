@@ -16,4 +16,3 @@ This function fits a mixed model with an random intercept for $community$
 (i.e. $city$). Other covariates are: a linear function for $year$, and an
 indicator variable for $dow$.
 }
-

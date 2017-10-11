@@ -22,4 +22,3 @@ pull_cities_name("rain50")
 }
 
 }
-

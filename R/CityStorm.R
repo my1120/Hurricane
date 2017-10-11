@@ -12,12 +12,13 @@
 #' @importFrom dplyr %>%
 #'
 #' @examples
-#' CityStorm(root = "~/tmp/NMMAPS/", criterion = "rain75", city = "miam")
+#' CityStorm(root = "~/Documents/NMMAPS/", criterion = "rain75", city = "miam")
 #'
 #' @export
-CityStorm <- function(root = "~/tmp/NMMAPS/", criterion = c(), city = c()){
+CityStorm <- function(root = "~/Documents/NMMAPS/", criterion = c(), city = c(),
+                      collapseAge = TRUE){
   # Get health data
-  h.df <- readCity(root, city)
+  h.df <- readCity(root, city, collapseAge)
 
   # Get storm data
   s.df <- readStorm(criterion, city)
@@ -56,6 +57,10 @@ CityStorm <- function(root = "~/tmp/NMMAPS/", criterion = c(), city = c()){
     dplyr::summarise(pop = sum(pop))
 
   df$pop <- city_pop$pop[city_pop$city == city]
+
+  # add other SES factor
+  city_census <- readRDS("data/citycensus.rds")
+  df$Ppoverty <- city_census$Ppoverty[city_census$city == city]
 
   return(df)
 }

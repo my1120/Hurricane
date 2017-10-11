@@ -16,4 +16,3 @@ This function fits a mixed model with an random intercept for $community$
 (i.e. $city$). Other covariates are indicator
 variable for $year$ and $dow$. The default optimizer is used in $glmer$.
 }
-
